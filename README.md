@@ -2,7 +2,7 @@
 
 A comprehensive study guide for the CompTIA Security+ (SY0-701) certification exam, synthesized from course materials and official exam objectives. Built as a single dark-mode HTML file with full anchor navigation.
 
-🔗 **[View the Study Guide](https://conwilso92.github.io/security-plus-study-guide)**
+🔗 **[View the Study Guide](https://conwilso92.github.io/securityplus-study-guide)**
 
 ---
 
@@ -59,4 +59,3 @@ Part of a broader CompTIA certification study toolkit:
 
 Built while studying for the CompTIA Security+ certification at Star V Learning Centers, Jacksonville, FL. Materials synthesized from course slide decks and the official SY0-701 exam objectives.
 
-**Certifications:** CompTIA A+ (Core 1 & Core 2 passed) · Network+ (in progress) · Security+ (in progress)
