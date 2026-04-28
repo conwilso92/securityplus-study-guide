@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompTIA Security+ SY0-701 Study Guide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d12;--bg2:#0f1318;--bg3:#151b24;--bg4:#1a2230;
+    --border:#1e2d40;--border-bright:#2a4060;
+    --text:#c8d8e8;--text-dim:#6a8aaa;--text-bright:#e8f4ff;
+    --accent:#00b4ff;--accent2:#00e5a0;--accent3:#ff6b35;--accent4:#ffd700;--accent5:#b060ff;--red:#ff4466;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,180,255,0.012) 2px,rgba(0,180,255,0.012) 4px);pointer-events:none;z-index:1000;}
+  .site-header{background:linear-gradient(135deg,#060b10 0%,#0a1520 50%,#060b10 100%);border-bottom:1px solid var(--border-bright);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+  .site-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,180,255,0.08) 0%,transparent 70%);}
+  .header-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.3);padding:0.3rem 1rem;border-radius:2px;margin-bottom:1.2rem;}
+  .site-header h1{font-family:'Exo 2',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:var(--text-bright);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.5rem;position:relative;}
+  .site-header h1 span{color:var(--accent);text-shadow:0 0 30px rgba(0,180,255,0.4);}
+  .site-header .subtitle{font-family:'Share Tech Mono',monospace;color:var(--text-dim);font-size:0.85rem;letter-spacing:0.12em;margin-bottom:2rem;}
+  .header-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+  .stat-pill{font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:var(--text-dim);border:1px solid var(--border);padding:0.35rem 0.9rem;border-radius:20px;background:rgba(255,255,255,0.02);}
+  .stat-pill strong{color:var(--accent2);}
+  .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+  .toc-nav{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .toc-nav h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.4rem;}
+  .toc-item{display:flex;align-items:center;gap:0.6rem;padding:0.45rem 0.7rem;border-radius:3px;text-decoration:none;color:var(--text-dim);font-size:0.82rem;transition:all 0.15s;border:1px solid transparent;}
+  .toc-item:hover{color:var(--text-bright);background:rgba(0,180,255,0.06);border-color:var(--border);}
+  .toc-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--accent);min-width:2rem;}
+  .domain-weights{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .domain-weights h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);margin-bottom:1.2rem;}
+  .weight-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.7rem;font-size:0.8rem;}
+  .weight-label{min-width:260px;color:var(--text-dim);}
+  .weight-bar-bg{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+  .weight-bar{height:100%;border-radius:3px;}
+  .weight-pct{font-family:'Share Tech Mono',monospace;font-size:0.75rem;min-width:2.5rem;text-align:right;}
+  .chapter{background:var(--bg2);border:1px solid var(--border);border-radius:4px;margin-bottom:2rem;overflow:hidden;}
+  .chapter-header{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .chapter-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.2);padding:0.25rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-title{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text-bright);flex:1;}
+  .chapter-obj{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--text-dim);background:var(--bg4);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-body{padding:1.5rem;}
+  .section-block{margin-bottom:1.5rem;}
+  .section-block:last-child{margin-bottom:0;}
+  .section-title{font-family:'Exo 2',sans-serif;font-weight:600;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem;}
+  .section-title::before{content:'▸';color:var(--accent);font-size:0.65rem;}
+  .def-grid{display:grid;grid-template-columns:minmax(170px,auto) 1fr;gap:0 1.2rem;font-size:0.83rem;}
+  .def-term{font-family:'Share Tech Mono',monospace;color:var(--accent4);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-self:start;}
+  .def-val{color:var(--text);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5;}
+  .data-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:0.5rem;}
+  .data-table th{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--bg4);padding:0.6rem 0.8rem;text-align:left;border:1px solid var(--border);}
+  .data-table td{padding:0.5rem 0.8rem;border:1px solid var(--border);vertical-align:top;color:var(--text);}
+  .data-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  .data-table tr:hover td{background:rgba(0,180,255,0.04);}
+  .hl-gold{font-family:'Share Tech Mono',monospace;color:var(--accent4);font-weight:bold;}
+  .hl-blue{font-family:'Share Tech Mono',monospace;color:var(--accent);font-weight:bold;}
+  .good{color:var(--accent2);}
+  .bad{color:var(--red);}
+  .neutral{color:var(--text-dim);}
+  .callout{border-left:3px solid;padding:0.8rem 1rem;border-radius:0 3px 3px 0;font-size:0.82rem;margin:0.8rem 0;line-height:1.55;}
+  .callout-exam{border-color:var(--accent4);background:rgba(255,215,0,0.05);color:var(--text);}
+  .callout-exam::before{content:'★ EXAM TIP  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent4);display:block;margin-bottom:0.35rem;}
+  .callout-warning{border-color:var(--accent3);background:rgba(255,107,53,0.05);color:var(--text);}
+  .callout-warning::before{content:'⚠ CRITICAL  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent3);display:block;margin-bottom:0.35rem;}
+  .callout-info{border-color:var(--accent);background:rgba(0,180,255,0.05);color:var(--text);}
+  .callout-info::before{content:'◈ NOTE  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent);display:block;margin-bottom:0.35rem;}
+  .concept-list{list-style:none;font-size:0.83rem;}
+  .concept-list li{padding:0.25rem 0 0.25rem 1.2rem;position:relative;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.03);}
+  .concept-list li::before{content:'›';position:absolute;left:0;color:var(--accent);font-family:'Share Tech Mono',monospace;}
+  .concept-list li strong{color:var(--text-bright);font-weight:600;}
+  .concept-list li code{font-family:'Share Tech Mono',monospace;background:var(--bg4);border:1px solid var(--border);padding:0.05rem 0.35rem;border-radius:2px;font-size:0.8em;color:var(--accent2);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+  .mini-h{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;margin:0.8rem 0 0.4rem;}
+  .ts-steps{counter-reset:ts;}
+  .ts-step{display:flex;gap:1rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.83rem;align-items:flex-start;}
+  .ts-step::before{counter-increment:ts;content:counter(ts);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,255,0.1);border:1px solid rgba(0,180,255,0.25);width:1.6rem;height:1.6rem;border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem;}
+  .tag{font-family:'Share Tech Mono',monospace;font-size:0.7rem;padding:0.2rem 0.55rem;border-radius:2px;border:1px solid;}
+  .tag-blue{color:var(--accent);border-color:rgba(0,180,255,0.3);background:rgba(0,180,255,0.06);}
+  .tag-green{color:var(--accent2);border-color:rgba(0,229,160,0.3);background:rgba(0,229,160,0.06);}
+  .tag-orange{color:var(--accent3);border-color:rgba(255,107,53,0.3);background:rgba(255,107,53,0.06);}
+  .tag-gold{color:var(--accent4);border-color:rgba(255,215,0,0.3);background:rgba(255,215,0,0.06);}
+  .tag-purple{color:var(--accent5);border-color:rgba(176,96,255,0.3);background:rgba(176,96,255,0.06);}
+  .site-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em;margin-top:2rem;}
+  [id]{scroll-margin-top:1rem;}
+  p{font-size:0.83rem;color:var(--text);margin-bottom:0.6rem;}
+  @media(max-width:640px){
+    .two-col,.three-col{grid-template-columns:1fr;}
+    .header-stats{gap:0.8rem;}
+    .toc-grid{grid-template-columns:1fr;}
+    .def-grid{grid-template-columns:1fr;gap:0;}
+    .def-term{border-bottom:none;padding-bottom:0;font-size:0.75rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-badge">SY0-701 CERTIFICATION PREP</div>
+  <h1>CompTIA <span>Security+</span> Study Guide</h1>
+  <p class="subtitle">SYNTHESIZED FROM STAR V LEARNING CENTERS COURSE MATERIALS · JACKSONVILLE, FL</p>
+  <div class="header-stats">
+    <span class="stat-pill"><strong>17</strong> Chapters</span>
+    <span class="stat-pill"><strong>5</strong> Exam Domains</span>
+    <span class="stat-pill">Exam <strong>SY0-701</strong></span>
+    <span class="stat-pill">Max <strong>90 Questions</strong></span>
+    <span class="stat-pill">v2 <strong>Gaps Patched</strong></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <nav class="toc-nav">
+    <h2>// Table of Contents</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#ch1"><span class="toc-num">01</span> Today's Security Professional</a>
+      <a class="toc-item" href="#ch2"><span class="toc-num">02</span> Cybersecurity Threat Landscape</a>
+      <a class="toc-item" href="#ch3"><span class="toc-num">03</span> Malicious Code</a>
+      <a class="toc-item" href="#ch4"><span class="toc-num">04</span> Social Engineering & Password Attacks</a>
+      <a class="toc-item" href="#ch5"><span class="toc-num">05</span> Security Assessment & Testing</a>
+      <a class="toc-item" href="#ch6"><span class="toc-num">06</span> Application Security</a>
+      <a class="toc-item" href="#ch7"><span class="toc-num">07</span> Cryptography & PKI</a>
+      <a class="toc-item" href="#ch8"><span class="toc-num">08</span> Identity & Access Management</a>
+      <a class="toc-item" href="#ch9"><span class="toc-num">09</span> Resilience & Physical Security</a>
+      <a class="toc-item" href="#ch10"><span class="toc-num">10</span> Cloud & Virtualization Security</a>
+      <a class="toc-item" href="#ch11"><span class="toc-num">11</span> Endpoint Security</a>
+      <a class="toc-item" href="#ch12"><span class="toc-num">12</span> Network Security</a>
+      <a class="toc-item" href="#ch13"><span class="toc-num">13</span> Wireless & Mobile Security</a>
+      <a class="toc-item" href="#ch14"><span class="toc-num">14</span> Monitoring & Incident Response</a>
+      <a class="toc-item" href="#ch15"><span class="toc-num">15</span> Digital Forensics</a>
+      <a class="toc-item" href="#ch16"><span class="toc-num">16</span> Security Governance & Compliance</a>
+      <a class="toc-item" href="#ch17"><span class="toc-num">17</span> Risk Management & Privacy</a>
+    </div>
+  </nav>
+
+  <div class="domain-weights">
+    <h2>// Exam Domain Weights (SY0-701)</h2>
+    <div class="weight-row"><span class="weight-label">1. General Security Concepts</span><div class="weight-bar-bg"><div class="weight-bar" style="width:12%;background:var(--accent)"></div></div><span class="weight-pct" style="color:var(--accent)">12%</span></div>
+    <div class="weight-row"><span class="weight-label">2. Threats, Vulnerabilities & Mitigations</span><div class="weight-bar-bg"><div class="weight-bar" style="width:22%;background:var(--accent2)"></div></div><span class="weight-pct" style="color:var(--accent2)">22%</span></div>
+    <div class="weight-row"><span class="weight-label">3. Security Architecture</span><div class="weight-bar-bg"><div class="weight-bar" style="width:18%;background:var(--accent4)"></div></div><span class="weight-pct" style="color:var(--accent4)">18%</span></div>
+    <div class="weight-row"><span class="weight-label">4. Security Operations</span><div class="weight-bar-bg"><div class="weight-bar" style="width:28%;background:var(--accent3)"></div></div><span class="weight-pct" style="color:var(--accent3)">28%</span></div>
+    <div class="weight-row"><span class="weight-label">5. Security Program Management & Oversight</span><div class="weight-bar-bg"><div class="weight-bar" style="width:20%;background:var(--accent5)"></div></div><span class="weight-pct" style="color:var(--accent5)">20%</span></div>
+  </div>
+
+  <!-- ═══ CH1 – TODAY'S SECURITY PROFESSIONAL ═══ -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-header"><span class="chapter-num">CH 01</span><h2 class="chapter-title">Today's Security Professional</h2><span class="chapter-obj">Domain 1 · Obj 1.1, 1.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">CIA Triad — The Foundation</div>
+        <div class="def-grid">
+          <span class="def-term">Confidentiality</span><span class="def-val">Only authorized users can access data. Enforced by encryption, access controls, and authentication. Violated by data breaches, eavesdropping, and unauthorized disclosure.</span>
+          <span class="def-term">Integrity</span><span class="def-val">Data has not been tampered with or altered without authorization. Enforced by hashing, digital signatures, and checksums. Violated by man-in-the-middle attacks, corruption, and unauthorized modification.</span>
+          <span class="def-term">Availability</span><span class="def-val">Systems and data are accessible when needed by authorized users. Enforced by redundancy, backups, and failover systems. Violated by DoS/DDoS attacks, hardware failure, and natural disasters.</span>
+          <span class="def-term">Nonrepudiation</span><span class="def-val">Someone who performed an action cannot later deny having done so. Enforced by digital signatures, audit logs, and certificates. Achieved through asymmetric cryptography.</span>
+        </div>
+        <div class="callout callout-exam">The DAD Triad is the opposite of CIA: Disclosure (violates Confidentiality), Alteration (violates Integrity), Denial (violates Availability). Know both triads and what attacks map to which principles.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Security Control Categories</div>
+        <div class="def-grid">
+          <span class="def-term">Technical</span><span class="def-val">Controls implemented through technology. Firewalls, encryption, IDS/IPS, access control lists, authentication systems.</span>
+          <span class="def-term">Managerial</span><span class="def-val">Administrative controls. Policies, procedures, risk assessments, security awareness training, background checks.</span>
+          <span class="def-term">Operational</span><span class="def-val">Day-to-day controls implemented by people. Security guards, user training, change management, incident response procedures.</span>
+          <span class="def-term">Physical</span><span class="def-val">Controls protecting physical space and hardware. Locks, bollards, fences, cameras, access control vestibules, security guards.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Security Control Types</div>
+        <div class="def-grid">
+          <span class="def-term">Preventive</span><span class="def-val">Stop a security issue before it occurs. Firewalls, encryption, locked doors, access controls. Acts before an attack.</span>
+          <span class="def-term">Deterrent</span><span class="def-val">Discourage an attacker from attempting an attack. Barbed wire, warning signs, guard dogs, visible cameras. Reduces likelihood of attempt.</span>
+          <span class="def-term">Detective</span><span class="def-val">Identify security events that have already occurred. IDS, security cameras, audit logs, SIEM. Monitoring after the fact.</span>
+          <span class="def-term">Corrective</span><span class="def-val">Remediate security issues after they occur. Restoring backups after ransomware, patching after exploitation, disabling compromised accounts.</span>
+          <span class="def-term">Compensating</span><span class="def-val">Alternative control when the primary control cannot be implemented. Must meet the intent and rigor of the original requirement and provide a similar level of defense. Common in PCI DSS compliance.</span>
+          <span class="def-term">Directive</span><span class="def-val">Inform and instruct employees what they should do. Policies, procedures, acceptable use agreements, security awareness training materials.</span>
+        </div>
+        <div class="callout callout-exam">Control categories (Technical/Managerial/Operational/Physical) describe HOW the control is implemented. Control types (Preventive/Deterrent/Detective/Corrective/Compensating/Directive) describe WHAT the control does. A firewall can be both Technical AND Preventive.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Gap Analysis</div>
+        <p>A gap analysis reviews all security controls and objectives to identify where a control does not meet the objective — a "gap" in security posture. The process compares the current state of security against a desired target state (compliance framework, internal policy, or industry standard). Gaps found are prioritized for remediation.</p>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">AAA Framework</div>
+        <div class="def-grid">
+          <span class="def-term">Authentication</span><span class="def-val">Proving who you are. Passwords, biometrics, tokens, certificates. Verifies identity claim.</span>
+          <span class="def-term">Authorization</span><span class="def-val">What you are permitted to do after authentication. Permissions, roles, ACLs.</span>
+          <span class="def-term">Accounting</span><span class="def-val">Tracking what authenticated users do. Audit logs, SIEM, event records. "Who did what and when."</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Breach Impact Categories</div>
+        <div class="def-grid">
+          <span class="def-term">Financial</span><span class="def-val">Direct monetary losses, regulatory fines, legal fees, notification costs.</span>
+          <span class="def-term">Strategic</span><span class="def-val">Organization becomes less effective at meeting business goals due to breach.</span>
+          <span class="def-term">Compliance</span><span class="def-val">Breach causes violations of legal or regulatory requirements (HIPAA, PCI DSS, GDPR).</span>
+          <span class="def-term">Operational</span><span class="def-val">Day-to-day functions disrupted. Manual workarounds, delayed processes, reduced capacity.</span>
+          <span class="def-term">Reputational</span><span class="def-val">Loss of customer trust, media coverage, damage to brand. Often the hardest to quantify and recover.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH2 – THREAT LANDSCAPE ═══ -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-header"><span class="chapter-num">CH 02</span><h2 class="chapter-title">Cybersecurity Threat Landscape</h2><span class="chapter-obj">Domain 2 · Obj 2.1, 2.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Threat Actors</div>
+        <div class="def-grid">
+          <span class="def-term">Script Kiddies (Unskilled)</span><span class="def-val">Use pre-built tools without understanding how they work. Low sophistication, low resources. Unpredictable and numerous. Motivated by thrills or notoriety.</span>
+          <span class="def-term">Hacktivists</span><span class="def-val">Use hacking to promote political or social causes. Variable skill levels. Examples: Anonymous. Motivated by ideology, not money.</span>
+          <span class="def-term">Insider Threats</span><span class="def-val">Current or former employees, contractors, or vendors with authorized access. Dangerous because they already have access and knowledge. Motivations: revenge, financial gain, ideology. Must use least privilege and audit logs to detect.</span>
+          <span class="def-term">Organized Crime</span><span class="def-val">Professional criminal organizations. High sophistication, significant resources. Primary motivation: financial gain. Common tactics: ransomware, fraud, data theft for sale.</span>
+          <span class="def-term">Nation-State / APT</span><span class="def-val">Government-sponsored attackers. Highest sophistication and unlimited resources. Advanced Persistent Threats (APTs) use unknown/novel techniques over extended periods. Motivations: espionage, sabotage, disruption. Example: Stuxnet (Iran nuclear enrichment).</span>
+          <span class="def-term">Shadow IT</span><span class="def-val">Unsanctioned technology used within an organization without IT approval. Creates security blind spots. Not malicious by intent but creates risk through unmanaged systems.</span>
+        </div>
+        <div class="callout callout-exam">APT characteristics: (1) Uses advanced techniques not just downloaded tools. (2) Persistent — attacks over a significant time period. Nation-state actors are the most capable and well-funded threat actors on the exam.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">The Hacker Hats</div>
+        <div class="def-grid">
+          <span class="def-term">White Hat</span><span class="def-val">Authorized security professionals. Hired or employed to find vulnerabilities. Penetration testers, security researchers. Legal, ethical, sanctioned.</span>
+          <span class="def-term">Black Hat</span><span class="def-val">Unauthorized attackers with malicious intent. Goal is to exploit systems for personal gain. Criminal activity.</span>
+          <span class="def-term">Gray Hat</span><span class="def-val">Act without authorization but claim good intent (informing the target of vulnerabilities). Good intent does not make it legal — still potentially criminal.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Threat Intelligence</div>
+        <div class="def-grid">
+          <span class="def-term">Open-Source Intelligence (OSINT)</span><span class="def-val">Publicly available information. News, social media, public databases, government reports, academic publications. Free but requires effort to process.</span>
+          <span class="def-term">Closed/Proprietary Intelligence</span><span class="def-val">Commercial threat feeds, internal security data, vendor reports. Not publicly available. More targeted and curated. Examples: vendor threat intelligence subscriptions.</span>
+          <span class="def-term">ISACs</span><span class="def-val">Information Sharing and Analysis Centers. Sector-specific (healthcare, financial, energy) organizations that share threat intelligence between member organizations and government agencies.</span>
+          <span class="def-term">Zero-Day Attack</span><span class="def-val">Exploits a previously unknown vulnerability with no available patch. No existing signature for detection tools. Extremely dangerous — no defense except behavioral detection.</span>
+          <span class="def-term">TTPs</span><span class="def-val">Tactics, Techniques, and Procedures. The behavior patterns of threat actors. Understanding TTPs enables defenders to detect and respond to attacks even when specific indicators are unknown.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Attack Motivations</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Data Exfiltration</span>
+          <span class="tag tag-orange">Financial Gain</span>
+          <span class="tag tag-orange">Espionage</span>
+          <span class="tag tag-orange">Service Disruption</span>
+          <span class="tag tag-orange">Blackmail</span>
+          <span class="tag tag-orange">Political / Philosophical</span>
+          <span class="tag tag-orange">Revenge</span>
+          <span class="tag tag-orange">Chaos / Disruption</span>
+          <span class="tag tag-orange">Cyberwarfare</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH3 – MALICIOUS CODE ═══ -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-header"><span class="chapter-num">CH 03</span><h2 class="chapter-title">Malicious Code</h2><span class="chapter-obj">Domain 2 · Obj 2.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Malware Types</div>
+        <div class="def-grid">
+          <span class="def-term">Virus</span><span class="def-val">Self-replicating malware that attaches to legitimate files. Requires user action to spread (running infected file). Types: boot sector, macro, email, memory-resident, fileless.</span>
+          <span class="def-term">Fileless Virus</span><span class="def-val">Operates entirely in memory — no file written to disk. Exploits browser plugins, interpreters, or living-off-the-land techniques. Evades traditional signature-based antivirus. Extremely hard to detect.</span>
+          <span class="def-term">Worm</span><span class="def-val">Self-replicates AND self-spreads without user action. Propagates across networks via email attachments, network shares, or vulnerabilities. No host file needed.</span>
+          <span class="def-term">Trojan Horse</span><span class="def-val">Disguises itself as legitimate software. Relies on social engineering — user installs it willingly. Creates backdoors, steals data, or downloads additional malware. Does NOT self-replicate.</span>
+          <span class="def-term">Ransomware</span><span class="def-val">Encrypts victim's files and demands payment for the decryption key. Effective offline backup to a separate location is the primary defense. Crypto ransomware (encrypts files) vs locker ransomware (locks screen).</span>
+          <span class="def-term">Spyware</span><span class="def-val">Secretly monitors user activity and collects information without consent. May capture keystrokes, screenshots, browsing history. Often bundled with free software.</span>
+          <span class="def-term">Adware</span><span class="def-val">Displays unwanted advertisements. Often installed as part of free software bundles. May redirect browser, inject ads. Not always malicious but undesirable.</span>
+          <span class="def-term">PUP (Potentially Unwanted Program)</span><span class="def-val">Software installed without full user awareness, often bundled with legitimate software. Not clearly malicious but undesirable. Remove with anti-malware tools and user education.</span>
+          <span class="def-term">Rootkit</span><span class="def-val">Provides persistent, covert backdoor access while hiding its presence from the OS and security tools. May operate at kernel level. Prevention: patching, secure configurations, Secure Boot, privilege management.</span>
+          <span class="def-term">Backdoor</span><span class="def-val">Bypasses normal authentication to allow covert access. Can be hardware or software-based. Often included in Trojans and rootkits. May be intentionally left by developers or maliciously installed.</span>
+          <span class="def-term">Bot / Botnet</span><span class="def-val">Bot = a compromised system under remote attacker control. Botnet = a network of bots. Used for DDoS attacks, spam relay, cryptocurrency mining, and additional attacks. Models: client-server (C2 server) and peer-to-peer.</span>
+          <span class="def-term">Keylogger</span><span class="def-val">Captures keystrokes to harvest credentials, personal information, and sensitive data. Transmitted back to attacker. Prevents defenses include MFA, screen keyboards, and anti-malware.</span>
+          <span class="def-term">Logic Bomb</span><span class="def-val">Code embedded in legitimate software that activates when specific conditions are met (date, user action, system state). Often planted by disgruntled insiders. Hard to detect before triggering.</span>
+        </div>
+        <div class="callout callout-exam">Virus vs Worm: A virus needs a host file AND user action to spread. A worm spreads itself automatically with no user action. Trojan vs Virus: A Trojan does NOT self-replicate — it relies entirely on the user running it. Ransomware defense: offline backups are the most effective mitigation.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH4 – SOCIAL ENGINEERING ═══ -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-header"><span class="chapter-num">CH 04</span><h2 class="chapter-title">Social Engineering & Password Attacks</h2><span class="chapter-obj">Domain 2 · Obj 2.2, 2.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Seven Principles of Social Engineering</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Authority</span>
+          <span class="tag tag-orange">Intimidation</span>
+          <span class="tag tag-orange">Consensus / Social Proof</span>
+          <span class="tag tag-orange">Scarcity</span>
+          <span class="tag tag-orange">Familiarity / Liking</span>
+          <span class="tag tag-orange">Urgency</span>
+          <span class="tag tag-orange">Trust</span>
+        </div>
+        <p style="margin-top:0.5rem;">Attackers exploit these psychological principles to manipulate users into taking actions that compromise security. The best defense is security awareness training.</p>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Social Engineering Techniques</div>
+        <div class="def-grid">
+          <span class="def-term">Phishing</span><span class="def-val">Mass email attack. Generic lure targeting many people. "Verify your account" or "You've won a prize." Casts a wide net — success through volume.</span>
+          <span class="def-term">Spear Phishing</span><span class="def-val">Targeted phishing using personal details about the victim (name, employer, colleagues). Much higher success rate than generic phishing.</span>
+          <span class="def-term">Whaling</span><span class="def-val">Spear phishing targeting executives (CEO, CFO, CTO). High-value targets. Often requests wire transfers, credential disclosure, or confidential data.</span>
+          <span class="def-term">Vishing</span><span class="def-val">Voice phishing. Phone call impersonating IT support, banks, government agencies. Uses urgency and authority to extract information.</span>
+          <span class="def-term">Smishing</span><span class="def-val">SMS phishing. Text messages containing malicious links or requests for information.</span>
+          <span class="def-term">Pretexting</span><span class="def-val">Creating a fabricated scenario (pretext) to extract information. Attacker poses as IT support, auditor, or other trusted role.</span>
+          <span class="def-term">Baiting</span><span class="def-val">Leaving infected USB drives in parking lots or public areas. Curiosity leads victims to plug them in, infecting their systems.</span>
+          <span class="def-term">Tailgating / Piggybacking</span><span class="def-val">Following an authorized person through a secure door. Mitigate with access control vestibules (mantraps) and security awareness.</span>
+          <span class="def-term">Shoulder Surfing</span><span class="def-val">Observing someone enter credentials or sensitive information. Mitigate with privacy screens and awareness.</span>
+          <span class="def-term">Dumpster Diving</span><span class="def-val">Searching trash for sensitive information (documents, hardware). Mitigate with shredding and clean desk policy.</span>
+          <span class="def-term">Watering Hole Attack</span><span class="def-val">Attacker compromises a website frequently visited by the target group. Victims are infected when they visit the site they already trust.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Password Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">Dictionary Attack</span><span class="def-val">Tries words from a dictionary file. Tools like John the Ripper. Common passwords and variations. Fast but limited to the dictionary's contents.</span>
+          <span class="def-term">Brute Force</span><span class="def-val">Tries every possible combination of characters. Guaranteed to succeed eventually but extremely slow for long passwords. Time increases exponentially with password length.</span>
+          <span class="def-term">Rainbow Table Attack</span><span class="def-val">Pre-computed hash-to-password lookup table. Trades storage for speed — no need to compute hashes in real time. Defeated by salting (adding random data before hashing).</span>
+          <span class="def-term">Credential Stuffing</span><span class="def-val">Uses username/password pairs leaked from other breaches. Relies on password reuse. Automated tool tries thousands of credentials across many sites.</span>
+          <span class="def-term">Password Spraying</span><span class="def-val">Tries a few common passwords against many accounts. Avoids account lockout by not hammering a single account. Common passwords: Summer2024!, Password1, Welcome1.</span>
+          <span class="def-term">Salting</span><span class="def-val">Adding a random value to a password before hashing. Makes rainbow table attacks infeasible — same password produces different hash for each user. Stored alongside the hash.</span>
+          <span class="def-term">Key Stretching</span><span class="def-val">Applying a hash function many thousands of times to make brute force attacks slower. bcrypt, scrypt, PBKDF2 use key stretching. Increases attacker's computation time.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH5 – SECURITY ASSESSMENT ═══ -->
+  <section class="chapter" id="ch5">
+    <div class="chapter-header"><span class="chapter-num">CH 05</span><h2 class="chapter-title">Security Assessment & Testing</h2><span class="chapter-obj">Domain 4 · Obj 4.1, 4.2, 4.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Assessment Types</div>
+        <div class="def-grid">
+          <span class="def-term">Passive Assessment</span><span class="def-val">Sniffs network traffic without sending packets. Discovers active systems and services without interaction. Minimal disruption risk.</span>
+          <span class="def-term">Active Assessment</span><span class="def-val">Sends packets and probes to systems. More thorough but risks disruption on production systems.</span>
+          <span class="def-term">Credentialed (Authenticated)</span><span class="def-val">Scanner logs into systems with valid credentials. Discovers internal vulnerabilities not visible from outside. More thorough than non-credentialed.</span>
+          <span class="def-term">Non-Credentialed</span><span class="def-val">Scans without system credentials. Tests what an external attacker would see. Misses internal configuration issues.</span>
+          <span class="def-term">Internal Assessment</span><span class="def-val">Scans the internal network infrastructure. Identifies internal vulnerabilities and misconfigurations.</span>
+          <span class="def-term">External Assessment</span><span class="def-val">Scans from outside the network perimeter. Tests what is exposed to the internet.</span>
+          <span class="def-term">Agent-Based</span><span class="def-val">Software agent installed on each system. Continuous monitoring. More detailed. Does not require network connectivity to scanner.</span>
+          <span class="def-term">Network-Based</span><span class="def-val">Scanner on the network probes systems. No agent required. Scans from a central point.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CVSS — Common Vulnerability Scoring System</div>
+        <p>CVSS provides a standardized way to measure and communicate the severity of security vulnerabilities. Used to prioritize remediation efforts.</p>
+        <p class="mini-h">CVSS Score Ratings</p>
+        <table class="data-table">
+          <thead><tr><th>Score</th><th>Rating</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">0.0</span></td><td>None</td><td>Informational only</td></tr>
+            <tr><td><span class="hl-gold">0.1 – 3.9</span></td><td>Low</td><td>Address when time permits</td></tr>
+            <tr><td><span class="hl-gold">4.0 – 6.9</span></td><td>Medium</td><td>Address within 30 days typically</td></tr>
+            <tr><td><span class="hl-gold">7.0 – 8.9</span></td><td>High</td><td>Address within 7 days typically</td></tr>
+            <tr><td><span class="hl-gold">9.0 – 10.0</span></td><td>Critical</td><td>Immediate remediation</td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">Key CVSS Metrics</p>
+        <div class="def-grid">
+          <span class="def-term">Attack Vector (AV)</span><span class="def-val">How attacker exploits: Physical (0.20) → Local (0.55) → Adjacent Network (0.62) → Network (0.85). Network = highest score (remotely exploitable).</span>
+          <span class="def-term">Attack Complexity (AC)</span><span class="def-val">High (0.44) = specialized conditions required. Low (0.77) = no special conditions. Low = easier to exploit.</span>
+          <span class="def-term">Privileges Required (PR)</span><span class="def-val">High (0.27) = admin required. Low (0.62) = basic user. None (0.85) = no auth required. None = most severe.</span>
+          <span class="def-term">User Interaction (UI)</span><span class="def-val">None (0.85) = no user action needed. Required (0.62) = victim must take action.</span>
+          <span class="def-term">Scope (S)</span><span class="def-val">Unchanged = only affects same system. Changed = can affect other systems/components.</span>
+          <span class="def-term">CIA Impact</span><span class="def-val">Confidentiality, Integrity, Availability each scored: None (0.00), Low (0.22), High (0.56).</span>
+        </div>
+        <div class="callout callout-exam">Scan result types: True Positive = correctly identified vulnerability. True Negative = correctly identified clean. False Positive = reports vulnerability that doesn't exist (waste of time). False Negative = misses a real vulnerability (dangerous). False negatives are the most dangerous scan outcome.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Penetration Testing</div>
+        <div class="def-grid">
+          <span class="def-term">Black Box</span><span class="def-val">Tester has no prior knowledge of the target. Simulates external attacker. Most realistic but slowest and most expensive.</span>
+          <span class="def-term">White Box</span><span class="def-val">Full knowledge provided (source code, architecture, credentials). Most thorough. Simulates insider or post-breach scenario.</span>
+          <span class="def-term">Gray Box</span><span class="def-val">Partial knowledge. Simulates insider with limited access or attacker who has done some reconnaissance. Balance of realism and efficiency.</span>
+          <span class="def-term">Rules of Engagement</span><span class="def-val">Formal agreement defining scope, timing, authorized targets, authorized techniques, and escalation procedures. Must be documented before testing begins.</span>
+          <span class="def-term">Reconnaissance</span><span class="def-val">Information gathering phase. Passive (OSINT, public records) and active (scanning, probing). Comes before exploitation.</span>
+        </div>
+        <div class="callout callout-exam">Pentest types: Physical, Network, Wireless, Application, Social Engineering, Cloud. A vulnerability scan identifies vulnerabilities. A penetration test actively exploits them to demonstrate real-world impact. Both are different from a security audit.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Management Life Cycle</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Identify Assets and Create Baseline</strong> — Know what you have before you can protect it.</div>
+          <div class="ts-step"><strong>Vulnerability Scan</strong> — Run scans using tools like Nessus, Qualys, OpenVAS, or Nikto.</div>
+          <div class="ts-step"><strong>Risk Assessment</strong> — Prioritize findings using CVSS scores and business context.</div>
+          <div class="ts-step"><strong>Remediation</strong> — Patch, configure, or mitigate identified vulnerabilities.</div>
+          <div class="ts-step"><strong>Verification</strong> — Rescan to confirm vulnerabilities were successfully remediated.</div>
+          <div class="ts-step"><strong>Monitor</strong> — Continuously monitor for new vulnerabilities and changes.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Common Vulnerability Scanning Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Nessus</span><span class="def-val">Industry-leading vulnerability scanner. Comprehensive plugin library. Available as professional and essentials (free) editions. Tenable product.</span>
+          <span class="def-term">Qualys</span><span class="def-val">Cloud-based platform. Continuous monitoring. Asset inventory, vulnerability management, compliance scanning.</span>
+          <span class="def-term">OpenVAS</span><span class="def-val">Open-source vulnerability scanner. Community-maintained. Comprehensive scanning with no license cost.</span>
+          <span class="def-term">Nikto</span><span class="def-val">Open-source web application scanner. CLI-based. Tests for SQL injection, XSS, CSRF, and other web vulnerabilities.</span>
+          <span class="def-term">Metasploit</span><span class="def-val">Penetration testing framework. Contains exploits, payloads, and auxiliary modules. Used after vulnerability discovery to demonstrate exploitability.</span>
+          <span class="def-term">Burp Suite</span><span class="def-val">Web application security testing platform. Proxy intercepts HTTP/HTTPS traffic. Used for manual web app testing and automated scanning.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">SCAP & Vulnerability Databases</div>
+        <div class="def-grid">
+          <span class="def-term">SCAP</span><span class="def-val">Security Content Automation Protocol. NIST framework that standardizes how security tools communicate vulnerability and configuration information. Enables automated compliance checking and vulnerability management across different vendor tools.</span>
+          <span class="def-term">CVE</span><span class="def-val">Common Vulnerabilities and Exposures. Publicly disclosed cybersecurity vulnerabilities, each assigned a unique identifier (CVE-YEAR-NNNNN). Maintained by MITRE. The universal reference for known vulnerabilities. Example: CVE-2021-44228 = Log4Shell.</span>
+          <span class="def-term">NVD</span><span class="def-val">National Vulnerability Database. NIST's public repository of CVEs enriched with CVSS scores, impact ratings, and remediation guidance. Where security teams look up CVE details.</span>
+          <span class="def-term">CWE</span><span class="def-val">Common Weakness Enumeration. Categorizes software and hardware weaknesses (design and coding flaws) that lead to vulnerabilities. CVE describes a specific instance; CWE describes the class of vulnerability. Example: CWE-79 = Cross-Site Scripting.</span>
+          <span class="def-term">CCE</span><span class="def-val">Common Configuration Enumeration. Assigns identifiers to system configuration issues. Used with SCAP to standardize configuration checks across tools.</span>
+          <span class="def-term">OVAL</span><span class="def-val">Open Vulnerability and Assessment Language. XML schema used by SCAP to describe system state and check conditions. Machine-readable vulnerability definitions that tools can process automatically.</span>
+          <span class="def-term">XCCDF</span><span class="def-val">Extensible Configuration Checklist Description Format. SCAP component. Machine-readable security checklists (like DISA STIGs). Automates compliance verification against benchmarks.</span>
+        </div>
+        <div class="callout callout-exam">CVE = specific known vulnerability instance (has a unique ID). CWE = category of weakness (e.g., "buffer overflow" is CWE-120). CVE has CVSS scores. SCAP ties CVE, CWE, CCE, OVAL, and XCCDF together into an automated compliance and vulnerability assessment framework. Expect scenario questions where you pick the right database/standard.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Application Testing Techniques</div>
+        <div class="def-grid">
+          <span class="def-term">SAST (Static Analysis)</span><span class="def-val">Static Application Security Testing. Analyzes source code, bytecode, or binaries WITHOUT executing the program. "White-box" testing. Can catch vulnerabilities early in development (shift-left). Tools: SonarQube, Checkmarx, Veracode. Cannot detect runtime issues.</span>
+          <span class="def-term">DAST (Dynamic Analysis)</span><span class="def-val">Dynamic Application Security Testing. Tests the running application from the outside — no source code needed. "Black-box" testing. Simulates attacker perspective. Catches runtime vulnerabilities SAST misses. Tools: OWASP ZAP, Burp Suite. Cannot pinpoint exact code location of flaws.</span>
+          <span class="def-term">IAST (Interactive)</span><span class="def-val">Interactive Application Security Testing. Agents inside the running application monitor it from within during normal use or automated testing. Combines SAST and DAST advantages — sees both code and runtime behavior. More accurate, fewer false positives.</span>
+          <span class="def-term">SCA (Software Composition Analysis)</span><span class="def-val">Identifies open-source components and third-party libraries in an application. Checks each component against vulnerability databases. Flags known-vulnerable dependencies. Critical for supply chain security.</span>
+          <span class="def-term">Fuzzing (Fuzz Testing)</span><span class="def-val">Sends random, malformed, or unexpected input data to an application to find crashes, memory corruption, and unexpected behavior. Discovers edge cases and vulnerabilities that manual review misses. Types: dumb fuzzing (random), smart fuzzing (structured/protocol-aware), mutation-based, generation-based.</span>
+          <span class="def-term">Manual Code Review</span><span class="def-val">Human expert reads source code looking for security flaws. Fagan inspection = formal structured review. Most thorough but most expensive and time-consuming. Catches logic flaws automated tools miss.</span>
+        </div>
+        <div class="callout callout-exam">SAST = source code, no execution (white-box). DAST = running app, no source code (black-box). IAST = agent inside running app (both). Fuzzing = random/malformed input looking for crashes. The exam loves asking which type of testing requires source code access (SAST) vs which doesn't (DAST).</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Threat Modeling</div>
+        <div class="def-grid">
+          <span class="def-term">Threat Modeling</span><span class="def-val">Structured process of identifying, assessing, and prioritizing potential threats to a system during design — before development. Cheaper to fix design flaws early than after deployment. Used in DevSecOps and secure SDLC.</span>
+          <span class="def-term">STRIDE</span><span class="def-val">Microsoft's threat modeling framework. Six threat categories: <strong>S</strong>poofing (identity), <strong>T</strong>ampering (data), <strong>R</strong>epudiation (denying actions), <strong>I</strong>nformation Disclosure (data exposure), <strong>D</strong>enial of Service (availability), <strong>E</strong>levation of Privilege (unauthorized access). Each maps to a CIA/AAA principle violation.</span>
+          <span class="def-term">PASTA</span><span class="def-val">Process for Attack Simulation and Threat Analysis. Risk-centric, attacker-focused. Seven stages from business objectives to attack simulation. Produces actionable risk assessment.</span>
+          <span class="def-term">Attack Surface</span><span class="def-val">All points where an attacker could try to interact with a system — ports, interfaces, APIs, user inputs, physical access points. Goal: minimize the attack surface. Removing unused services, ports, and accounts reduces attack surface.</span>
+          <span class="def-term">Attack Vector</span><span class="def-val">The path or means by which an attacker exploits a vulnerability. Network, Adjacent, Local, Physical (CVSS AV metric). Different from attack surface — vector is the method, surface is the available targets.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH6 – APPLICATION SECURITY ═══ -->
+  <section class="chapter" id="ch6">
+    <div class="chapter-header"><span class="chapter-num">CH 06</span><h2 class="chapter-title">Application Security</h2><span class="chapter-obj">Domain 2 · Obj 2.3, 2.5</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Software Development Life Cycle (SDLC)</div>
+        <div class="def-grid">
+          <span class="def-term">Waterfall</span><span class="def-val">Linear sequential phases. Each phase must complete before the next begins. Planning → Analysis → Design → Development → Testing → Deployment → Maintenance. Poor at handling changing requirements.</span>
+          <span class="def-term">Agile</span><span class="def-val">Iterative, collaborative development. Short sprints (2–4 weeks). Continuous feedback and adaptation. Better for changing requirements. Security can be integrated at each sprint.</span>
+          <span class="def-term">Spiral</span><span class="def-val">Combines iterative development with risk management. Each cycle: plan → risk analysis → develop → evaluate. Good for large, high-risk projects.</span>
+          <span class="def-term">DevSecOps</span><span class="def-val">Integrates security directly into the DevOps pipeline. Security testing at every stage — not bolted on at the end. "Shift left" = address security issues earlier in development.</span>
+        </div>
+        <p class="mini-h">SDLC Environments</p>
+        <div class="def-grid">
+          <span class="def-term">Development</span><span class="def-val">Where code is written. Developers have significant access. Not production data.</span>
+          <span class="def-term">Test / QA</span><span class="def-val">Where code is tested. Quality assurance activities. Validates functionality.</span>
+          <span class="def-term">Staging</span><span class="def-val">Pre-production environment. Final validation before deployment. Mirrors production closely.</span>
+          <span class="def-term">Production</span><span class="def-val">Live system. Must follow change management. Direct access should be very limited.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Common Application Vulnerabilities</div>
+        <div class="def-grid">
+          <span class="def-term">SQL Injection (SQLi)</span><span class="def-val">Attacker injects SQL commands into input fields that are processed by the database. Can read, modify, or delete data. Defense: parameterized queries / prepared statements. Content-based (returns data) and blind (infers data from behavior).</span>
+          <span class="def-term">Cross-Site Scripting (XSS)</span><span class="def-val">Attacker injects malicious scripts into web pages viewed by other users. Types: Reflected (script in URL, executed immediately), Stored/Persistent (script saved to server, executed when page loads), DOM-based. Defense: input validation, output encoding.</span>
+          <span class="def-term">Cross-Site Request Forgery (CSRF)</span><span class="def-val">Tricks authenticated user's browser into sending unauthorized requests to a web application. Defense: CSRF tokens, same-site cookie attribute, requiring re-authentication for sensitive actions.</span>
+          <span class="def-term">Directory Traversal</span><span class="def-val">Attacker accesses files outside the web root by using ../ sequences. Example: ../../etc/passwd. Defense: input validation, chrooted environments.</span>
+          <span class="def-term">Buffer Overflow</span><span class="def-val">Writing more data to a buffer than it can hold, overwriting adjacent memory. Can allow arbitrary code execution. Defense: bounds checking, ASLR (Address Space Layout Randomization), DEP (Data Execution Prevention).</span>
+          <span class="def-term">Race Condition</span><span class="def-val">Exploit timing window between check and use of a resource. TOCTOU (Time-of-Check-Time-of-Use). Defense: atomic operations, proper locking mechanisms.</span>
+          <span class="def-term">Memory Leak</span><span class="def-val">Application allocates memory and never releases it. Eventually exhausts available memory, causing crashes. Defense: proper memory management, code review.</span>
+          <span class="def-term">Hard-Coded Credentials</span><span class="def-val">Usernames or passwords embedded directly in source code. Can be discovered through source code review or reverse engineering. Defense: use configuration files, secrets managers, environment variables.</span>
+        </div>
+        <div class="callout callout-exam">Stored XSS is more dangerous than reflected XSS because it persists on the server and affects every user who visits the page. Reflected XSS requires a victim to click a specific malicious link. Both steal session cookies or execute code in the victim's browser.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Secure Coding Practices</div>
+        <ul class="concept-list">
+          <li><strong>Parameterized Queries</strong> — Separate code from data. Primary defense against SQL injection.</li>
+          <li><strong>Input Validation</strong> — Validate all user input on the server side (not just client side). Whitelist acceptable values.</li>
+          <li><strong>Output Encoding</strong> — Encode output before rendering in browser. Primary defense against XSS.</li>
+          <li><strong>Error Handling</strong> — Never reveal stack traces, database errors, or internal paths to users. Log internally, show generic messages.</li>
+          <li><strong>Code Signing</strong> — Digitally sign code so users can verify it hasn't been tampered with.</li>
+          <li><strong>Code Review</strong> — Manual (Fagan inspection) or automated (SAST tools) review of source code for vulnerabilities before deployment.</li>
+          <li><strong>OWASP Top 10</strong> — OWASP (Open Web Application Security Project) publishes the most critical web application security risks. The Top 10 is the exam's reference for web vulnerability priorities.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Application Security Controls</div>
+        <div class="def-grid">
+          <span class="def-term">WAF (Web Application Firewall)</span><span class="def-val">Inspects HTTP/HTTPS traffic to web applications. Filters out SQLi, XSS, and other web attacks. Works at Layer 7. Can be hardware, software, or cloud-based.</span>
+          <span class="def-term">Tokenization</span><span class="def-val">Replaces sensitive data with a non-sensitive placeholder (token). The real data is stored securely elsewhere. Common for payment cards (PCI DSS).</span>
+          <span class="def-term">Data Masking</span><span class="def-val">Obscures sensitive data by substituting characters. Used in non-production environments so developers work with realistic data without exposure. Example: 4532-****-****-1234.</span>
+          <span class="def-term">Normalization</span><span class="def-val">Database design process that reduces redundancy and prevents anomalies. Structured correctly, prevents some injection paths.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Injection Attack Types</div>
+        <div class="def-grid">
+          <span class="def-term">SQL Injection</span><span class="def-val">Most common injection type. Attacker inserts SQL commands into user input fields that get executed by the database. Prevent with parameterized queries/prepared statements and stored procedures.</span>
+          <span class="def-term">Command Injection</span><span class="def-val">Attacker injects OS-level commands through application inputs. Application passes user input directly to a shell. Example: entering <code>; rm -rf /</code> in a ping field. Prevent with input validation and avoiding shell calls with user input.</span>
+          <span class="def-term">LDAP Injection</span><span class="def-val">Injects LDAP filter characters to manipulate directory queries. Can allow authentication bypass or unauthorized directory data access. Prevent with input sanitization of LDAP special characters.</span>
+          <span class="def-term">XML Injection / XXE</span><span class="def-val">XML External Entity injection. Attacker sends malicious XML referencing external entities. Can read local files, perform SSRF, or cause DoS. Prevent by disabling external entity processing in XML parsers.</span>
+          <span class="def-term">HTML / Template Injection</span><span class="def-val">Injects HTML or template syntax that gets rendered by the server or browser. Can lead to XSS or Server-Side Template Injection (SSTI) — which can execute arbitrary code on the server.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">API Security</div>
+        <div class="def-grid">
+          <span class="def-term">API (Application Programming Interface)</span><span class="def-val">Interface allowing applications to communicate with each other. REST, SOAP, and GraphQL are common types. APIs are a major and growing attack surface — they often bypass traditional web application controls.</span>
+          <span class="def-term">API Keys</span><span class="def-val">Tokens used to authenticate API calls. Must be protected like passwords — never hard-coded in source code, never exposed in URLs. Rotate regularly. Store in secrets managers.</span>
+          <span class="def-term">Rate Limiting</span><span class="def-val">Restricts how many API requests a client can make in a given time period. Prevents brute force, DoS, and data scraping via API. Returns HTTP 429 (Too Many Requests) when exceeded.</span>
+          <span class="def-term">Broken Object Level Authorization</span><span class="def-val">OWASP API #1 risk. API returns data for objects the requesting user doesn't have permission to access. Validate that the requesting user is authorized for each specific object, not just the endpoint.</span>
+          <span class="def-term">Security Headers</span><span class="def-val">HTTP response headers that improve security. Key headers: Content-Security-Policy (CSP, prevents XSS), X-Frame-Options (prevents clickjacking), HSTS (forces HTTPS), X-Content-Type-Options (prevents MIME sniffing).</span>
+        </div>
+        <div class="callout callout-exam">APIs are tested heavily in SY0-701. The OWASP API Security Top 10 is separate from the OWASP Web Top 10. Broken Object Level Authorization (BOLA) = insecure direct object reference in API context. Treat every API endpoint as a potential attack surface requiring its own authorization check.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH7 – CRYPTOGRAPHY ═══ -->
+  <section class="chapter" id="ch7">
+    <div class="chapter-header"><span class="chapter-num">CH 07</span><h2 class="chapter-title">Cryptography & PKI</h2><span class="chapter-obj">Domain 1 · Obj 1.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Symmetric vs Asymmetric Encryption</div>
+        <table class="data-table">
+          <thead><tr><th>Feature</th><th>Symmetric</th><th>Asymmetric</th></tr></thead>
+          <tbody>
+            <tr><td>Keys</td><td>Single shared key</td><td>Public/private key pair</td></tr>
+            <tr><td>Key Exchange</td><td>Out-of-band (must share key securely)</td><td>In-band (public key is shared openly)</td></tr>
+            <tr><td>Speed</td><td><span class="good">Fast</span></td><td><span class="bad">Slow</span></td></tr>
+            <tr><td>Scalability</td><td><span class="bad">Not scalable</span></td><td><span class="good">Scalable</span></td></tr>
+            <tr><td>Use Cases</td><td>Bulk data encryption, disk encryption</td><td>Key exchange, digital signatures, certificates, small blocks</td></tr>
+            <tr><td>Provides</td><td>Confidentiality, Integrity</td><td>Confidentiality, Integrity, Authentication, Nonrepudiation</td></tr>
+            <tr><td>Examples</td><td>AES, 3DES, DES</td><td>RSA, ECC, Diffie-Hellman</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">In practice, TLS uses BOTH: asymmetric crypto to securely exchange a symmetric session key, then symmetric crypto for the bulk data. This hybrid approach gets the security of asymmetric with the speed of symmetric.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Encryption Algorithms</div>
+        <div class="def-grid">
+          <span class="def-term">AES</span><span class="def-val">Advanced Encryption Standard. Symmetric block cipher. Key sizes: 128, 192, or 256 bits. Current gold standard for symmetric encryption. Used in WPA2, TLS, disk encryption.</span>
+          <span class="def-term">3DES (Triple DES)</span><span class="def-val">Applies DES three times. Legacy algorithm. Slower than AES. Being phased out. Still seen in older systems.</span>
+          <span class="def-term">RSA</span><span class="def-val">Asymmetric. Based on difficulty of factoring large prime numbers. Key sizes: 2048 or 4096 bits for modern security. Used for key exchange and digital signatures.</span>
+          <span class="def-term">ECC (Elliptic Curve)</span><span class="def-val">Asymmetric. Based on elliptic curve mathematics. Much smaller key sizes for equivalent security. 256-bit ECC ≈ 3072-bit RSA. More efficient. Used in mobile devices and modern TLS.</span>
+          <span class="def-term">Diffie-Hellman</span><span class="def-val">Key exchange protocol — allows two parties to establish a shared secret over an insecure channel without prior shared secret. Used when no other key distribution method is available.</span>
+          <span class="def-term">DH Ephemeral (DHE/ECDHE)</span><span class="def-val">Generates a new key pair for each session. Provides Perfect Forward Secrecy (PFS) — compromise of long-term key doesn't expose past sessions.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Hashing</div>
+        <div class="def-grid">
+          <span class="def-term">Hash Function</span><span class="def-val">One-way mathematical function. Produces fixed-length output (digest) from any input. Same input = same output always. Cannot be reversed. Used for integrity verification.</span>
+          <span class="def-term">MD5</span><span class="def-val">Produces 128-bit hash. Known vulnerable to collisions — two different inputs can produce the same hash. DO NOT use for security purposes. Legacy only.</span>
+          <span class="def-term">SHA-1</span><span class="def-val">160-bit hash. Deprecated — collision attacks demonstrated. No longer acceptable for security use.</span>
+          <span class="def-term">SHA-256</span><span class="def-val">256-bit hash. Part of SHA-2 family. Current standard for most security applications.</span>
+          <span class="def-term">SHA-3</span><span class="def-val">Latest NIST standard. Completely different design from SHA-2 (Keccak algorithm). Available as backup if SHA-2 vulnerabilities discovered.</span>
+          <span class="def-term">HMAC</span><span class="def-val">Hash-based Message Authentication Code. Combines hash function with a shared secret key. Provides integrity AND authentication but NOT nonrepudiation (requires shared key).</span>
+          <span class="def-term">Collision</span><span class="def-val">When two different inputs produce the same hash output. Makes the hash function unusable for integrity verification. MD5 and SHA-1 are vulnerable to collisions.</span>
+        </div>
+        <div class="callout callout-exam">Hashing ≠ Encryption. Hashing is one-way — you cannot reverse it. Encryption is two-way — you can decrypt with the key. Hashing verifies INTEGRITY. Encryption provides CONFIDENTIALITY. Never confuse the two on the exam.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Digital Signatures</div>
+        <p>Digital signatures provide authentication, integrity, and nonrepudiation. Process:</p>
+        <div class="ts-steps">
+          <div class="ts-step">Sender hashes the message with a hashing algorithm (SHA-256).</div>
+          <div class="ts-step">Sender encrypts the hash with their <strong>private key</strong> — this is the digital signature.</div>
+          <div class="ts-step">Sender sends message + signature to recipient.</div>
+          <div class="ts-step">Recipient decrypts the signature using sender's <strong>public key</strong> to get the hash.</div>
+          <div class="ts-step">Recipient independently hashes the received message.</div>
+          <div class="ts-step">If both hashes match: message is authentic and unaltered. Sender cannot deny sending it (nonrepudiation).</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Public Key Infrastructure (PKI)</div>
+        <div class="def-grid">
+          <span class="def-term">CA (Certificate Authority)</span><span class="def-val">Trusted third party that issues and signs digital certificates. Root CA → Intermediate CA → End-entity certificates (trust chain). Examples: DigiCert, Let's Encrypt, VeriSign.</span>
+          <span class="def-term">X.509</span><span class="def-val">Standard defining the format of digital certificates. Contains: version, serial number, issuer, validity period, subject, subject's public key, and CA digital signature.</span>
+          <span class="def-term">Certificate Types</span><span class="def-val">DV (Domain Validation), OV (Organization Validation), EV (Extended Validation). Wildcard cert (*. domain.com) covers all subdomains. SAN cert covers multiple specific domains.</span>
+          <span class="def-term">CSR</span><span class="def-val">Certificate Signing Request. Created by the entity requesting a certificate. Contains their public key and identity info. Sent to CA for signing.</span>
+          <span class="def-term">CRL (Certificate Revocation List)</span><span class="def-val">Published list of revoked certificate serial numbers. Client downloads the list and checks against it. Can be outdated between publications.</span>
+          <span class="def-term">OCSP</span><span class="def-val">Online Certificate Status Protocol. Real-time validation of a certificate's status. Client queries OCSP responder → gets signed "good" or "revoked" response. Faster and more current than CRL.</span>
+          <span class="def-term">Certificate Stapling</span><span class="def-val">Server pre-fetches and caches the OCSP response, then "staples" it to the TLS handshake. Client doesn't need to query OCSP separately. Reduces latency and improves privacy.</span>
+          <span class="def-term">TPM</span><span class="def-val">Trusted Platform Module. Hardware chip securely storing encryption keys, certificates, and cryptographic measurements. Used by BitLocker, Secure Boot, Windows 11 requirement.</span>
+          <span class="def-term">HSM</span><span class="def-val">Hardware Security Module. Dedicated removable device for cryptographic key storage and operations. Tamper-resistant. Enterprise-grade. More capable and portable than TPM.</span>
+          <span class="def-term">Key Escrow</span><span class="def-val">Copies of encryption keys held by a third party (escrow agent). Allows recovery if key is lost. Government requirement in some contexts. "Fair cryptosystem" approach.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Obfuscation Techniques</div>
+        <div class="def-grid">
+          <span class="def-term">Steganography</span><span class="def-val">Hides data within seemingly harmless carrier files (images, audio, video). The existence of the hidden data itself is concealed. Different from encryption — doesn't make data unreadable, makes it invisible.</span>
+          <span class="def-term">Tokenization</span><span class="def-val">Replaces sensitive data with a non-sensitive token. Mapping stored in secure vault. Used in PCI DSS for card numbers.</span>
+          <span class="def-term">Data Masking</span><span class="def-val">Replaces real data with realistic but fictional data. Used in test/development environments. Preserves format and structure.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cipher Modes of Operation</div>
+        <div class="def-grid">
+          <span class="def-term">ECB (Electronic Codebook)</span><span class="def-val">Simplest mode. Each block encrypted independently with the same key. Identical plaintext blocks produce identical ciphertext blocks — patterns are preserved. Insecure — never use for sensitive data. The famous "ECB penguin" demonstrates this flaw visually.</span>
+          <span class="def-term">CBC (Cipher Block Chaining)</span><span class="def-val">Each plaintext block XORed with previous ciphertext block before encryption. Requires an Initialization Vector (IV) for the first block. Identical plaintexts produce different ciphertexts. Secure but sequential — cannot be parallelized for encryption.</span>
+          <span class="def-term">CTR (Counter)</span><span class="def-val">Converts block cipher into a stream cipher using a counter. Fully parallelizable — fast. No padding needed. IV + counter encrypted, then XORed with plaintext. Widely used in modern systems.</span>
+          <span class="def-term">GCM (Galois/Counter Mode)</span><span class="def-val">CTR mode + built-in authentication tag (GHASH). Provides both encryption AND integrity/authenticity simultaneously. AEAD (Authenticated Encryption with Associated Data). Current gold standard — used in TLS 1.3 and AES-GCM.</span>
+          <span class="def-term">Stream Cipher</span><span class="def-val">Encrypts data one bit or byte at a time using a keystream. Fast, good for real-time communications. Examples: RC4 (deprecated — weak), ChaCha20 (modern, used in TLS as alternative to AES). No padding needed.</span>
+        </div>
+        <div class="callout callout-exam">ECB is always the wrong answer for secure encryption — it leaks patterns. GCM is preferred for authenticated encryption because it provides confidentiality AND integrity in one operation. TLS 1.3 exclusively uses AEAD ciphers (AES-GCM and ChaCha20-Poly1305) — no CBC, no RC4.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Advanced Cryptographic Concepts</div>
+        <div class="def-grid">
+          <span class="def-term">Perfect Forward Secrecy (PFS)</span><span class="def-val">Each session uses a unique ephemeral key. Compromise of the long-term private key does NOT expose past sessions. Achieved with DHE or ECDHE key exchange. Enabled by default in TLS 1.3. Critical for long-term confidentiality.</span>
+          <span class="def-term">Post-Quantum Cryptography</span><span class="def-val">Algorithms designed to resist attacks from quantum computers. Quantum computers break RSA and ECC using Shor's algorithm. NIST selected post-quantum standards in 2024: CRYSTALS-Kyber (key encapsulation), CRYSTALS-Dilithium (digital signatures). Organizations should begin planning migration now.</span>
+          <span class="def-term">Quantum Key Distribution (QKD)</span><span class="def-val">Uses quantum mechanics to distribute cryptographic keys. Any eavesdropping attempt physically disturbs the quantum state and is detectable. Theoretically unbreakable key exchange. Currently limited by distance and infrastructure requirements.</span>
+          <span class="def-term">Homomorphic Encryption</span><span class="def-val">Allows computation on encrypted data without decrypting it first. Results when decrypted equal the result of operations on the plaintext. Enables privacy-preserving cloud computing and secure data analysis.</span>
+          <span class="def-term">Blockchain</span><span class="def-val">Distributed, immutable ledger. Each block contains data, its own hash, and the previous block's hash — forming a chain. Tampering with any block invalidates all subsequent blocks. Uses consensus mechanisms for validation. Provides integrity and nonrepudiation without central authority.</span>
+          <span class="def-term">Cryptographic Agility</span><span class="def-val">System's ability to switch between cryptographic algorithms without major redesign. Important as algorithms age and become vulnerable. Build systems to be algorithm-agnostic so you can update without replacing the entire security infrastructure.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cryptographic Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">Birthday Attack</span><span class="def-val">Exploits the birthday paradox — the probability of two inputs producing the same hash (collision) is much higher than expected. Target: weak hash functions (MD5, SHA-1). Defense: use larger hash outputs (SHA-256+).</span>
+          <span class="def-term">Downgrade Attack</span><span class="def-val">Forces a connection to use an older, weaker protocol or cipher suite. Examples: POODLE (SSLv3), BEAST (TLS 1.0). Defense: disable legacy protocols (SSLv2/v3, TLS 1.0/1.1), enforce minimum TLS 1.2.</span>
+          <span class="def-term">Pass the Hash</span><span class="def-val">Attacker captures a password hash and uses it directly to authenticate without knowing the plaintext password. Exploits NTLM authentication. Defense: credential guard, network segmentation, privileged access workstations.</span>
+          <span class="def-term">Replay Attack</span><span class="def-val">Attacker captures valid authentication data and retransmits it later. Defense: session tokens with expiration, timestamps, nonces (number used once).</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH8 – IAM ═══ -->
+  <section class="chapter" id="ch8">
+    <div class="chapter-header"><span class="chapter-num">CH 08</span><h2 class="chapter-title">Identity & Access Management</h2><span class="chapter-obj">Domain 4 · Obj 4.6</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Authentication Protocols</div>
+        <div class="def-grid">
+          <span class="def-term">PAP</span><span class="def-val">Password Authentication Protocol. Username and password sent in plaintext over PPP. Completely insecure. Never use.</span>
+          <span class="def-term">CHAP</span><span class="def-val">Challenge-Handshake Authentication Protocol. Three-way handshake. Server sends challenge → client hashes it with password → server verifies. Sends hash, not password. Re-authenticates periodically during session.</span>
+          <span class="def-term">EAP</span><span class="def-val">Extensible Authentication Protocol. Framework supporting multiple authentication methods. Used with 802.1X for network access control. Many variants: EAP-TLS, PEAP, EAP-TTLS.</span>
+          <span class="def-term">RADIUS</span><span class="def-val">Remote Authentication Dial-In User Service. Centralizes authentication. Port 1812/1813. UDP. Encrypts password only. Used for Wi-Fi, VPN, and network access. AAA protocol.</span>
+          <span class="def-term">TACACS+</span><span class="def-val">Terminal Access Controller Access-Control System Plus. Port 49. TCP. Encrypts entire session. Cisco-preferred for device administration. Separates authentication, authorization, and accounting.</span>
+          <span class="def-term">Kerberos</span><span class="def-val">Ticket-based authentication for Active Directory. Port 88. KDC (Key Distribution Center) issues tickets. TGT (Ticket Granting Ticket) → Service Ticket. Mutual authentication — client and server both verify each other. Vulnerable to Pass-the-Ticket and Golden Ticket attacks.</span>
+          <span class="def-term">LDAP / LDAPS</span><span class="def-val">Lightweight Directory Access Protocol. Port 389 (plain) / 636 (TLS). Queries directory services (Active Directory). LDAPS adds TLS encryption.</span>
+          <span class="def-term">SAML</span><span class="def-val">Security Assertion Markup Language. XML-based. Enables Single Sign-On between identity providers (IdP) and service providers (SP). Common in enterprise web SSO.</span>
+          <span class="def-term">OAuth 2.0</span><span class="def-val">Authorization framework (not authentication). Allows apps to access resources on behalf of a user without sharing credentials. "Sign in with Google" uses OAuth.</span>
+          <span class="def-term">OpenID Connect</span><span class="def-val">Authentication layer built on top of OAuth 2.0. Adds identity verification to OAuth's authorization. Provides ID tokens. Used alongside OAuth.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Multifactor Authentication (MFA)</div>
+        <div class="def-grid">
+          <span class="def-term">Something You Know</span><span class="def-val">Password, PIN, passphrase, security questions. Easiest factor to compromise (phishing, brute force).</span>
+          <span class="def-term">Something You Have</span><span class="def-val">Smart card, hardware token (RSA SecurID), TOTP app (Google Authenticator), USB security key (YubiKey), phone (SMS code).</span>
+          <span class="def-term">Something You Are</span><span class="def-val">Biometrics: fingerprint, retinal scan, facial recognition, voice recognition, hand geometry. Hardest to replicate.</span>
+          <span class="def-term">Somewhere You Are</span><span class="def-val">Geolocation. Adaptive authentication considers login location. Impossible travel detection.</span>
+          <span class="def-term">TOTP</span><span class="def-val">Time-Based One-Time Password. Generated from shared secret + current time. Valid for 30 seconds typically. Google Authenticator, Authy. More secure than SMS.</span>
+          <span class="def-term">HOTP</span><span class="def-val">HMAC-Based One-Time Password. Counter-based. Valid until used. Less time-sensitive than TOTP.</span>
+        </div>
+        <div class="callout callout-exam">Password + PIN = NOT MFA (both "something you know"). Smartcard + fingerprint = TRUE MFA ("have" + "are"). Password + security question = NOT MFA (both "know"). True MFA requires factors from two DIFFERENT categories.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Biometrics</div>
+        <div class="def-grid">
+          <span class="def-term">FAR (False Acceptance Rate)</span><span class="def-val">Rate at which imposters are incorrectly accepted. High FAR = system is too lenient. Security risk.</span>
+          <span class="def-term">FRR (False Rejection Rate)</span><span class="def-val">Rate at which legitimate users are rejected. High FRR = system is too strict. Usability problem.</span>
+          <span class="def-term">Crossover Error Rate (CER/EER)</span><span class="def-val">Point where FAR = FRR. The lower the CER, the more accurate the biometric system. Best single metric for comparing biometric systems.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Access Control Models</div>
+        <div class="def-grid">
+          <span class="def-term">DAC (Discretionary)</span><span class="def-val">Resource owner decides who gets access. Standard NTFS permissions. Flexible but dependent on owner decisions. Most common in business environments.</span>
+          <span class="def-term">MAC (Mandatory)</span><span class="def-val">System enforces access based on classification labels. Users cannot override. Confidential/Secret/Top Secret. Used in government and military. SELinux implements MAC.</span>
+          <span class="def-term">RBAC (Role-Based)</span><span class="def-val">Permissions assigned to roles, roles assigned to users. Access based on job function. Easier to manage than per-user permissions. Most common enterprise model.</span>
+          <span class="def-term">ABAC (Attribute-Based)</span><span class="def-val">Access based on attributes of user, resource, and environment. Most flexible and granular. Time of day, location, device type can all be attributes.</span>
+          <span class="def-term">Rule-Based</span><span class="def-val">Static rules define access. Firewall ACLs are a common example. Not the same as RBAC despite similar name.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Federation & SSO</div>
+        <div class="def-grid">
+          <span class="def-term">SSO</span><span class="def-val">Single Sign-On. One authentication grants access to multiple systems. Reduces password fatigue. Kerberos implements SSO in Active Directory environments.</span>
+          <span class="def-term">Federation</span><span class="def-val">Extends SSO across organizational boundaries. Different organizations with separate identity systems trust each other's authentication. Enables "login with Google/Microsoft/GitHub."</span>
+          <span class="def-term">Identity Provider (IdP)</span><span class="def-val">System that creates, maintains, and manages identity information and authenticates users. Examples: Microsoft Azure AD, Okta, Google Workspace.</span>
+          <span class="def-term">Service Provider (SP)</span><span class="def-val">Application or service that relies on the IdP for authentication. Does not manage user credentials itself.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Privileged Access Management</div>
+        <div class="def-grid">
+          <span class="def-term">Password Vaulting</span><span class="def-val">Centralized, encrypted storage for privileged account credentials. Vault manages access, rotates passwords automatically, and logs all credential use. Examples: CyberArk, HashiCorp Vault, Thycotic. Eliminates shared admin passwords known by multiple people.</span>
+          <span class="def-term">Just-in-Time (JIT) Access</span><span class="def-val">Privileged access granted only for the duration of a specific task, then automatically revoked. Minimizes the window of exposure for highly privileged accounts. No standing admin access — privilege granted when needed, removed when done.</span>
+          <span class="def-term">PAW (Privileged Access Workstation)</span><span class="def-val">Dedicated, hardened workstation used exclusively for admin tasks. Never used for browsing, email, or general work. Isolated from regular user network. Prevents credential theft via malware on general-use systems.</span>
+          <span class="def-term">Ephemeral Credentials</span><span class="def-val">Short-lived, single-use credentials. Automatically expire after a time limit or single use. Used with cloud services and JIT access. Minimizes damage if compromised.</span>
+          <span class="def-term">Separation of Duties</span><span class="def-val">No single person controls an entire critical process. Requires multiple people to complete sensitive tasks. Reduces fraud, insider threats, and accidental errors. Example: one person requests access, another approves it.</span>
+          <span class="def-term">Dual Control</span><span class="def-val">Two authorized people must both be present and agree to perform a critical action. Common in nuclear launch, banking wire transfers, and master key management.</span>
+        </div>
+        <div class="callout callout-exam">Password vaulting, JIT access, and PAWs are all covered in SY0-701 under privileged access management. The key concept: standing admin access (always-on admin credentials) is a significant risk. JIT + vaulting + PAW together form defense-in-depth for privileged accounts.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH9 – RESILIENCE & PHYSICAL ═══ -->
+  <section class="chapter" id="ch9">
+    <div class="chapter-header"><span class="chapter-num">CH 09</span><h2 class="chapter-title">Resilience & Physical Security</h2><span class="chapter-obj">Domain 3 · Obj 3.1, 3.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Redundancy & High Availability</div>
+        <div class="def-grid">
+          <span class="def-term">Geographic Dispersion</span><span class="def-val">Distributing systems and data across multiple physical locations. Protects against site-level disasters and regional outages.</span>
+          <span class="def-term">Multi-path Networks</span><span class="def-val">Redundant network paths between systems. No single point of failure in network connectivity.</span>
+          <span class="def-term">Replication</span><span class="def-val">Continuously duplicating data to a separate location. Synchronous (no data loss, higher latency) vs Asynchronous (slight data loss risk, lower latency impact).</span>
+          <span class="def-term">Clustering</span><span class="def-val">Multiple servers working as one logical unit. Active-Active: all handle load simultaneously. Active-Passive: standby takes over on failure.</span>
+          <span class="def-term">Load Balancing</span><span class="def-val">Distributes traffic across multiple servers. Prevents overload. Also improves availability — if one server fails, others absorb load.</span>
+          <span class="def-term">Platform Diversity</span><span class="def-val">Using different vendors, OS, or hardware for redundant systems. Prevents a single vulnerability from taking down all backup systems simultaneously.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Backup Types</div>
+        <table class="data-table">
+          <thead><tr><th>Type</th><th>Backs Up</th><th>Archive Bit</th><th>Backup Speed</th><th>Restore Speed</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Full</span></td><td>Everything</td><td>Cleared</td><td><span class="bad">Slowest</span></td><td><span class="good">Fastest (1 set)</span></td></tr>
+            <tr><td><span class="hl-gold">Incremental</span></td><td>Changed since last backup (full or incremental)</td><td>Cleared</td><td><span class="good">Fastest</span></td><td><span class="bad">Slowest (needs all incrementals)</span></td></tr>
+            <tr><td><span class="hl-gold">Differential</span></td><td>Changed since last FULL only</td><td>NOT cleared</td><td><span class="neutral">Medium (grows over time)</span></td><td><span class="neutral">Medium (full + latest diff)</span></td></tr>
+            <tr><td><span class="hl-gold">Snapshot</span></td><td>Point-in-time state</td><td>N/A</td><td><span class="good">Instant</span></td><td><span class="good">Fast</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Disaster Recovery Sites</div>
+        <table class="data-table">
+          <thead><tr><th>Site Type</th><th>Equipment</th><th>Data Currency</th><th>Recovery Time</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Hot Site</span></td><td>Fully operational mirror</td><td>Real-time/near-real-time</td><td><span class="good">Minutes to hours</span></td><td><span class="bad">Highest</span></td></tr>
+            <tr><td><span class="hl-gold">Warm Site</span></td><td>Infrastructure ready, not active</td><td>Restore from recent backup</td><td><span class="neutral">Hours to days</span></td><td><span class="neutral">Medium</span></td></tr>
+            <tr><td><span class="hl-gold">Cold Site</span></td><td>Physical space only</td><td>Full restore from backup</td><td><span class="bad">Weeks</span></td><td><span class="good">Lowest</span></td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">Site Restoration Order</p>
+        <ul class="concept-list">
+          <li>Restore the most critical systems first. Establish communications → core infrastructure (DNS, AD) → business-critical applications → secondary systems.</li>
+          <li>Document the restoration order in the Disaster Recovery Plan (DRP) before an incident — not during.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Resilience Testing Methods</div>
+        <div class="def-grid">
+          <span class="def-term">Tabletop Exercise</span><span class="def-val">Discussion-based scenario walkthrough. Key personnel talk through response to a simulated event. No systems touched. Cheapest and easiest. Good starting point.</span>
+          <span class="def-term">Simulation</span><span class="def-val">Computer-modeled scenarios or partial system simulations. No live systems at risk.</span>
+          <span class="def-term">Parallel Processing</span><span class="def-val">Hot site or alternate system validated while production continues. Tests backup system without taking down primary.</span>
+          <span class="def-term">Failover Exercise</span><span class="def-val">Actual planned failover to the backup system. Most realistic test. Production traffic moved to DR site. Higher risk but most comprehensive.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Business Impact Analysis (BIA)</div>
+        <div class="def-grid">
+          <span class="def-term">BIA</span><span class="def-val">Business Impact Analysis. Identifies and quantifies the impact of disruptions to business functions. Determines which systems and processes are most critical. Foundation of all DR and BCP planning — must be done first.</span>
+          <span class="def-term">Mission-Essential Functions</span><span class="def-val">The functions an organization must continue during a disruption to remain viable. Examples: payment processing, emergency services dispatch, patient care. Everything in the BCP is built around protecting these.</span>
+          <span class="def-term">RTO (Recovery Time Objective)</span><span class="def-val">Maximum acceptable downtime after a disruption. "How long can we be offline?" Low RTO = need hot site or automated failover. Drives DR site selection and architecture decisions.</span>
+          <span class="def-term">RPO (Recovery Point Objective)</span><span class="def-val">Maximum acceptable data loss measured in time. "How much data can we lose?" Low RPO = need frequent backups or synchronous replication. An RPO of 1 hour means you must back up at least every hour.</span>
+          <span class="def-term">MTBF (Mean Time Between Failures)</span><span class="def-val">Average time a component or system operates before failing. Higher MTBF = more reliable hardware. Used to predict failure rates and plan maintenance cycles. A component with MTBF of 50,000 hours is more reliable than one with 10,000 hours.</span>
+          <span class="def-term">MTTR (Mean Time to Repair)</span><span class="def-val">Average time to restore a failed component or system. Lower MTTR = faster recovery. Drives decisions about spare parts, staff training, and vendor support contracts.</span>
+          <span class="def-term">MTTF (Mean Time to Failure)</span><span class="def-val">Expected operational lifetime of a non-repairable component (like an HDD). After failure, the component is replaced, not repaired. Used in storage and hardware lifecycle planning.</span>
+        </div>
+        <div class="callout callout-exam">BIA comes FIRST in DR planning — before choosing a DR site or writing the plan. BIA identifies what matters most and how long you can be without it (RTO/RPO). MTBF is about reliability (how long before it breaks). MTTR is about recovery (how long to fix it). Lower MTTR + higher MTBF = highest availability.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Business Continuity Planning (BCP)</div>
+        <div class="def-grid">
+          <span class="def-term">BCP vs DRP</span><span class="def-val">BCP = Business Continuity Plan. Covers how the business continues operating during and after a disruption (people, processes, facilities). DRP = Disaster Recovery Plan. Technical subset of BCP focused on restoring IT systems and data.</span>
+          <span class="def-term">COOP</span><span class="def-val">Continuity of Operations Plan. Government/military term equivalent to BCP. Ensures essential functions continue during emergencies. Identifies alternate facilities, personnel, and communication channels.</span>
+          <span class="def-term">Succession Planning</span><span class="def-val">Identifies and prepares backup personnel for key roles. If a critical staff member is unavailable during a disaster, someone else knows how to perform their functions. Documented, not just assumed.</span>
+          <span class="def-term">Alternate Sites</span><span class="def-val">Pre-designated alternate locations where operations can continue if primary facility is unavailable. May be owned by the organization or contracted with a DR services provider.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Physical Security Controls</div>
+        <div class="def-grid">
+          <span class="def-term">Access Control Vestibule (Mantrap)</span><span class="def-val">Two-door airlock. First door must close before second opens. Prevents tailgating. Required at high-security facility entrances.</span>
+          <span class="def-term">Bollards</span><span class="def-val">Short sturdy posts that prevent vehicle ramming. Steel or concrete. Protect building perimeter.</span>
+          <span class="def-term">Fencing</span><span class="def-val">Perimeter control. Height, visibility, and material determine deterrence level. Topped with barbed wire or concertina wire for higher security.</span>
+          <span class="def-term">Security Guards</span><span class="def-val">Human element. Can respond, adapt, and make decisions. Expensive. Complement with technology controls.</span>
+          <span class="def-term">Cameras / CCTV</span><span class="def-val">Deterrent and detective control. PTZ (Pan-Tilt-Zoom) for coverage flexibility. Motion-triggered recording for storage efficiency.</span>
+          <span class="def-term">Lighting</span><span class="def-val">Reduces concealment. Deters physical intrusion attempts. Enables effective camera monitoring.</span>
+          <span class="def-term">Sensors</span><span class="def-val">Infrared (body heat/motion), Pressure (weight), Microwave (movement), Ultrasonic (sound waves reflected off objects).</span>
+          <span class="def-term">Access Badges</span><span class="def-val">RFID or smart card based. Tied to identity. Can be immediately revoked. Logs entries and exits for audit.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH10 – CLOUD & VIRTUALIZATION ═══ -->
+  <section class="chapter" id="ch10">
+    <div class="chapter-header"><span class="chapter-num">CH 10</span><h2 class="chapter-title">Cloud & Virtualization Security</h2><span class="chapter-obj">Domain 3 · Obj 3.5, 3.6</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Cloud Service Models</div>
+        <table class="data-table">
+          <thead><tr><th>Model</th><th>You Manage</th><th>Provider Manages</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">IaaS</span></td><td>OS, apps, data, runtime</td><td>Hardware, network, virtualization</td><td>AWS EC2, Azure VMs</td></tr>
+            <tr><td><span class="hl-gold">PaaS</span></td><td>Apps and data only</td><td>OS, hardware, runtime</td><td>AWS Elastic Beanstalk, Google App Engine</td></tr>
+            <tr><td><span class="hl-gold">SaaS</span></td><td>Nothing — just use it</td><td>Everything</td><td>Office 365, Salesforce</td></tr>
+            <tr><td><span class="hl-gold">FaaS</span></td><td>Function code only</td><td>Runtime, infrastructure, scaling</td><td>AWS Lambda, Azure Functions</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Shared Responsibility Model</div>
+        <div class="def-grid">
+          <span class="def-term">CSP Responsible For</span><span class="def-val">Security <em>of</em> the cloud. Physical security of data centers, hardware maintenance, hypervisor security, availability of services. Infrastructure layer.</span>
+          <span class="def-term">Customer Responsible For</span><span class="def-val">Security <em>in</em> the cloud. Data security, identity management, OS patching (in IaaS), application security, encryption configuration, access controls.</span>
+        </div>
+        <div class="callout callout-exam">The shared responsibility line shifts based on service model. In SaaS, the customer is responsible for almost nothing. In IaaS, the customer manages the OS and above. Misconfigured S3 buckets and security groups are customer failures — not CSP failures.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Virtualization Security</div>
+        <div class="def-grid">
+          <span class="def-term">Type 1 Hypervisor</span><span class="def-val">Bare-metal. Runs directly on hardware. More secure and performant. Examples: VMware ESXi, Hyper-V Server, Proxmox.</span>
+          <span class="def-term">Type 2 Hypervisor</span><span class="def-val">Hosted. Runs on top of a host OS. Less secure (more attack surface). Examples: VirtualBox, VMware Workstation.</span>
+          <span class="def-term">VM Escape</span><span class="def-val">Critical security concern. Attacker breaks out of a VM and accesses the hypervisor or other VMs. Rare but catastrophic if successful. Requires prompt hypervisor patching.</span>
+          <span class="def-term">VM Sprawl</span><span class="def-val">Uncontrolled proliferation of VMs. Forgotten VMs miss patches, consume resources, create unmanaged attack surfaces. Control with lifecycle management policies.</span>
+          <span class="def-term">Container Security</span><span class="def-val">Containers share the host OS kernel — less isolation than VMs. If container runtime is compromised, all containers on that host are at risk. Use container-specific security tools (Falco, Trivy).</span>
+          <span class="def-term">VPC (Virtual Private Cloud)</span><span class="def-val">Cloud equivalent of a VLAN. Logically isolated section of the cloud. Public subnets (internet-accessible) and private subnets (internal only). Provides network segmentation in the cloud.</span>
+          <span class="def-term">Security Groups</span><span class="def-val">Cloud-native virtual firewall. Controls traffic to/from cloud resources. Stateful — return traffic automatically allowed. Applied at the instance level.</span>
+          <span class="def-term">CASB</span><span class="def-val">Cloud Access Security Broker. Intermediary between users and cloud services. Enforces security policies, provides visibility into shadow IT cloud usage, DLP, threat protection.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cloud Security Issues</div>
+        <ul class="concept-list">
+          <li><strong>Misconfiguration</strong> — #1 cause of cloud breaches. Publicly exposed storage buckets, overly permissive security groups, unencrypted data. Always configure least privilege.</li>
+          <li><strong>Data Sovereignty</strong> — Data stored in foreign countries may be subject to foreign laws. Know where your cloud provider stores data.</li>
+          <li><strong>Insecure APIs</strong> — Cloud services managed through APIs. Unprotected APIs = direct attack surface. Require authentication and monitor API usage.</li>
+          <li><strong>Insufficient Identity Management</strong> — Weak or overly broad IAM permissions. Apply principle of least privilege rigorously in cloud IAM.</li>
+          <li><strong>Cloud Scaling</strong> — Vertical = add resources to existing server. Horizontal = add more servers. Elasticity = automatically scale based on demand (short-term). Scalability = capacity for long-term growth.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Modern Cloud Architecture Security</div>
+        <div class="def-grid">
+          <span class="def-term">Microservices</span><span class="def-val">Application broken into small, independently deployable services that communicate via APIs. Security implication: large number of inter-service API calls create a significant internal attack surface. Each service must authenticate with others. Lateral movement risk if one service is compromised.</span>
+          <span class="def-term">Serverless</span><span class="def-val">Code runs in stateless functions (FaaS) managed entirely by the CSP. No server OS to patch. Security shifts to: function code vulnerabilities, event injection attacks (malicious input triggers function), over-permissive IAM roles assigned to functions, and dependency vulnerabilities in function packages.</span>
+          <span class="def-term">Infrastructure as Code (IaC)</span><span class="def-val">Provisioning infrastructure via code/configuration files (Terraform, Ansible, CloudFormation). Security benefits: versioned, auditable, repeatable. Security risks: hardcoded credentials in IaC files, misconfigured templates replicated at scale, secrets in version control. Use secrets managers, not IaC files, for credentials.</span>
+          <span class="def-term">CI/CD Pipeline Security</span><span class="def-val">Continuous Integration/Continuous Delivery pipeline automates build, test, and deployment. Security concerns: supply chain attacks injecting malicious code into the pipeline, insecure build artifacts, insufficient testing gates. Integrate SAST/DAST into the pipeline. Sign all artifacts.</span>
+          <span class="def-term">Software-Defined Networking (SDN)</span><span class="def-val">Decouples network control plane from data plane. Centralized controller manages all traffic decisions. Security benefit: programmable, consistent policy enforcement. Security risk: controller is a single point of failure and high-value target.</span>
+          <span class="def-term">SASE (Secure Access Service Edge)</span><span class="def-val">Converges SD-WAN with cloud-delivered security services (CASB, SWG, ZTNA, FWaaS). Secures access for remote users and branch offices from a cloud-native platform. Identity-driven rather than perimeter-driven security model.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH11 – ENDPOINT SECURITY ═══ -->
+  <section class="chapter" id="ch11">
+    <div class="chapter-header"><span class="chapter-num">CH 11</span><h2 class="chapter-title">Endpoint Security</h2><span class="chapter-obj">Domain 4 · Obj 4.1</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Endpoint Hardening</div>
+        <ul class="concept-list">
+          <li><strong>Close Unused Ports</strong> — Every open port is an attack surface. Verify with netstat and firewall rules.</li>
+          <li><strong>Disable Unused Services</strong> — Services.msc (Windows) / systemctl (Linux). Every running service is a potential entry point.</li>
+          <li><strong>Patch Management</strong> — Apply OS and application patches promptly. WSUS (Windows Server Update Services) for centralized Windows patching.</li>
+          <li><strong>Remove Default Credentials</strong> — Always change default usernames and passwords on all systems and devices.</li>
+          <li><strong>Disable Unnecessary Features</strong> — Disable Bluetooth, IR, and NFC if not required.</li>
+          <li><strong>Enable Host-Based Firewall</strong> — Windows Firewall, iptables/nftables on Linux.</li>
+          <li><strong>Secure Boot</strong> — UEFI feature ensuring only signed, trusted software loads at boot. Prevents bootloader malware.</li>
+          <li><strong>Measured Boot</strong> — UEFI hashes firmware, bootloader, and drivers at each boot. Results stored in TPM. Used to detect unauthorized changes to the boot process.</li>
+          <li><strong>Full Disk Encryption (FDE)</strong> — BitLocker (Windows), FileVault (macOS), LUKS (Linux). Protects data if hardware is stolen.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Endpoint Security Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Antivirus / Anti-Malware</span><span class="def-val">Signature-based detection of known threats. Requires up-to-date signatures. Misses zero-days and novel threats.</span>
+          <span class="def-term">EDR (Endpoint Detection & Response)</span><span class="def-val">Advanced endpoint security. Behavioral monitoring, threat hunting, incident response capabilities. Detects threats that bypass traditional AV.</span>
+          <span class="def-term">HIDS (Host-based IDS)</span><span class="def-val">Monitors system activity and alerts on suspicious behavior. Passive — does not block. Good for detecting insider threats and malware after installation.</span>
+          <span class="def-term">HIPS (Host-based IPS)</span><span class="def-val">Like HIDS but actively blocks detected threats. Risk of false-positive blocks on legitimate activity.</span>
+          <span class="def-term">DLP (Data Loss Prevention)</span><span class="def-val">Monitors and prevents unauthorized transfer of sensitive data. Can block USB transfers, email attachments, or cloud uploads based on content classification.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Embedded & Specialized Systems</div>
+        <div class="def-grid">
+          <span class="def-term">Embedded Systems</span><span class="def-val">Specialized computers integrated into a device to perform a specific function. Limited resources, often no user interface. Assessment requires understanding specific interfaces and update mechanisms.</span>
+          <span class="def-term">SCADA / ICS</span><span class="def-val">Supervisory Control and Data Acquisition / Industrial Control Systems. Controls critical infrastructure (power, water, manufacturing). Uses RTUs (Remote Telemetry Units) and PLCs (Programmable Logic Controllers). High-value attack target — never directly internet-exposed.</span>
+          <span class="def-term">IoT Security</span><span class="def-val">Internet of Things. Often weak security by design — limited processing, infrequent updates, default credentials. Mitigations: change defaults, segment on dedicated VLAN, keep firmware updated, disable unneeded features.</span>
+          <span class="def-term">Firmware</span><span class="def-val">Embedded software enabling device operation. Attack vectors: malicious firmware updates, user-space attacks, remote attacks if network-connected. End-of-life firmware with no update support = significant risk.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH12 – NETWORK SECURITY ═══ -->
+  <section class="chapter" id="ch12">
+    <div class="chapter-header"><span class="chapter-num">CH 12</span><h2 class="chapter-title">Network Security</h2><span class="chapter-obj">Domain 3 · Obj 3.2, 3.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Network Security Architecture</div>
+        <div class="def-grid">
+          <span class="def-term">Network Segmentation</span><span class="def-val">Dividing a network into smaller segments. Limits lateral movement after a breach. VLANs, subnets, and DMZ are common techniques.</span>
+          <span class="def-term">DMZ</span><span class="def-val">Demilitarized Zone. Separate network segment between external and internal networks. Public-facing servers (web, email, DNS) go here. Isolated from internal LAN — a breach of DMZ doesn't equal internal access.</span>
+          <span class="def-term">Zero Trust</span><span class="def-val">Never trust, always verify. No implicit trust based on network location. Every access request authenticated and authorized. Key components: subjects, policy engines, policy administrators, policy enforcement points. Relies on: adaptive identity, least privilege, policy-driven access control.</span>
+          <span class="def-term">Fail Open</span><span class="def-val">When security device fails, all traffic is allowed through. Prioritizes availability over security. Used for high-availability requirements.</span>
+          <span class="def-term">Fail Closed</span><span class="def-val">When security device fails, no traffic passes. Prioritizes security over availability. Used when security is paramount.</span>
+          <span class="def-term">NAC (Network Access Control)</span><span class="def-val">Determines whether a device should be allowed on the network based on posture (patch level, AV status, encryption). Pre-admission (before connecting) or post-admission (after connecting). Agent-based or agentless.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Security Tools</div>
+        <div class="def-grid">
+          <span class="def-term">IDS (Intrusion Detection System)</span><span class="def-val">Monitors and alerts on suspicious traffic. Passive — does NOT block. Out-of-band deployment — traffic copy sent to IDS. Network-based (NIDS) or Host-based (HIDS).</span>
+          <span class="def-term">IPS (Intrusion Prevention System)</span><span class="def-val">Inline deployment — monitors AND blocks in real time. Must be in traffic path. Risk of blocking legitimate traffic (false positives). Network-based (NIPS) or Host-based (HIPS).</span>
+          <span class="def-term">NGFW</span><span class="def-val">Next-Generation Firewall. Layer 7 inspection (deep packet inspection), application awareness, user identity, built-in IPS. Combines traditional firewall + IPS + application control.</span>
+          <span class="def-term">Port Mirroring / SPAN</span><span class="def-val">Copy of network traffic from one port sent to another port (monitor port). Used to connect IDS, packet analyzers, or monitoring tools without being inline. Out-of-band.</span>
+          <span class="def-term">Honeypot</span><span class="def-val">Decoy system designed to attract attackers. Appears valuable but is monitored. Provides intelligence on attack techniques. Isolated from real systems.</span>
+          <span class="def-term">Honeynet</span><span class="def-val">Network of honeypots simulating an entire enterprise environment.</span>
+          <span class="def-term">Honeytoken / Honeyfile</span><span class="def-val">Fake credentials or files that trigger an alert when accessed. Detect insider threats and exfiltration attempts.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Access & Management Controls</div>
+        <div class="def-grid">
+          <span class="def-term">Jump Server / Bastion Host</span><span class="def-val">Hardened, monitored server that acts as the single entry point for administrative access to systems in a protected network segment. Admins connect to the jump server first, then to target systems. All admin sessions logged. Reduces attack surface by eliminating direct admin access from external networks.</span>
+          <span class="def-term">Out-of-Band Management</span><span class="def-val">Separate dedicated management network for administrative access to network devices. Management traffic never shares the production network. If production network goes down, admin can still access devices. Uses dedicated management interfaces, serial console servers, or cellular backup links.</span>
+          <span class="def-term">In-Band Management</span><span class="def-val">Administrative access uses the same network as production traffic. Simpler to set up but less secure — management traffic travels alongside user data. Can be secured with VLANs and encryption but is less resilient than out-of-band.</span>
+          <span class="def-term">Network Access Control (NAC)</span><span class="def-val">Verifies device security posture before granting network access. Checks: AV status, patch level, encryption, domain membership. Non-compliant devices quarantined. Agent-based (software on device) or agentless (network fingerprinting).</span>
+          <span class="def-term">SD-WAN</span><span class="def-val">Software-Defined WAN. Centrally manages multiple WAN links (MPLS, broadband, LTE). Routes traffic over best available path. Reduces reliance on expensive MPLS. Security consideration: traffic may traverse untrusted internet links — must be encrypted.</span>
+          <span class="def-term">SASE</span><span class="def-val">Secure Access Service Edge. Converges SD-WAN with cloud-delivered security (CASB, SWG, ZTNA). Identity-centric. Secures users and devices regardless of location without backhauling traffic through a central data center.</span>
+        </div>
+        <div class="callout callout-exam">Jump server = the only way in to admin a protected segment. Bastion host = same concept. All admin sessions through the jump server are logged. Out-of-band management = separate network for device management. If an exam question asks how to maintain admin access when production network fails — the answer is out-of-band management.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Secure vs Insecure Protocols</div>
+        <table class="data-table">
+          <thead><tr><th>Insecure Protocol</th><th>Port</th><th>Secure Replacement</th><th>Secure Port</th></tr></thead>
+          <tbody>
+            <tr><td>Telnet</td><td>TCP 23</td><td>SSH</td><td>TCP 22</td></tr>
+            <tr><td>FTP</td><td>TCP 20/21</td><td>SFTP (SSH) / FTPS (TLS)</td><td>TCP 22 / 990</td></tr>
+            <tr><td>HTTP</td><td>TCP 80</td><td>HTTPS (TLS)</td><td>TCP 443</td></tr>
+            <tr><td>SMTP</td><td>TCP 25</td><td>SMTPS</td><td>TCP 465/587</td></tr>
+            <tr><td>POP3</td><td>TCP 110</td><td>POP3S</td><td>TCP 995</td></tr>
+            <tr><td>IMAP</td><td>TCP 143</td><td>IMAPS</td><td>TCP 993</td></tr>
+            <tr><td>LDAP</td><td>TCP 389</td><td>LDAPS</td><td>TCP 636</td></tr>
+            <tr><td>SNMP v1/v2</td><td>UDP 161/162</td><td>SNMPv3</td><td>UDP 161/162</td></tr>
+            <tr><td>DNS</td><td>UDP/TCP 53</td><td>DNSSEC / DoT / DoH</td><td>UDP/TCP 53 / 853 / 443</td></tr>
+            <tr><td>RTP (VoIP)</td><td>UDP 16384–32767</td><td>SRTP</td><td>UDP 5004</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Email Security Protocols</div>
+        <div class="def-grid">
+          <span class="def-term">SPF (Sender Policy Framework)</span><span class="def-val">DNS record listing all authorized mail servers for a domain. Receiving mail server checks if sending server is on the list. Rejects or flags emails from unauthorized servers. Prevents email spoofing.</span>
+          <span class="def-term">DKIM (DomainKeys Identified Mail)</span><span class="def-val">Digitally signs email body and key headers with private key. Public key published in DNS. Receiving server verifies signature. Ensures message wasn't altered in transit.</span>
+          <span class="def-term">DMARC</span><span class="def-val">Domain-based Message Authentication Reporting and Conformance. Uses SPF and DKIM results to determine what to do with messages that fail authentication: none (monitor), quarantine, or reject. Provides reporting to domain owner.</span>
+        </div>
+        <div class="callout callout-exam">SPF = authorized server list. DKIM = message signature. DMARC = policy for handling failures + reporting. All three should be deployed together. SPF and DKIM alone without DMARC don't provide enforcement. The order: SPF and DKIM check authenticity → DMARC determines the action.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">DDoS</span><span class="def-val">Distributed Denial of Service. Overwhelming a target with traffic from many sources (botnet). Volumetric (bandwidth), Protocol (state table exhaustion), Application layer (Layer 7 attacks).</span>
+          <span class="def-term">SYN Flood</span><span class="def-val">Attacker sends many SYN packets but never completes the handshake. Server exhausts half-open connection table. Mitigate with SYN cookies.</span>
+          <span class="def-term">On-Path Attack (MITM)</span><span class="def-val">Attacker intercepts and optionally modifies communication between two parties. Both parties believe they're talking to each other. Enables eavesdropping, credential theft, and data manipulation.</span>
+          <span class="def-term">DNS Poisoning</span><span class="def-val">Injecting false DNS records into a resolver's cache. Victims are redirected to attacker-controlled servers. Mitigate with DNSSEC.</span>
+          <span class="def-term">ARP Poisoning</span><span class="def-val">Sending fake ARP replies to associate attacker's MAC with legitimate IP. Enables MITM on the local network segment. Mitigate with Dynamic ARP Inspection (DAI).</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH13 – WIRELESS & MOBILE ═══ -->
+  <section class="chapter" id="ch13">
+    <div class="chapter-header"><span class="chapter-num">CH 13</span><h2 class="chapter-title">Wireless & Mobile Security</h2><span class="chapter-obj">Domain 3 · Obj 3.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Wi-Fi Security Protocols</div>
+        <table class="data-table">
+          <thead><tr><th>Protocol</th><th>Encryption</th><th>Auth Mode</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">WEP</span></td><td>RC4 (40/128-bit)</td><td>Open / Shared Key</td><td><span class="bad">Broken. Never use. Crackable in minutes.</span></td></tr>
+            <tr><td><span class="hl-gold">WPA</span></td><td>TKIP (RC4-based)</td><td>PSK / Enterprise</td><td><span class="bad">Legacy. Phased out. Weak.</span></td></tr>
+            <tr><td><span class="hl-gold">WPA2</span></td><td>AES-CCMP</td><td>Open / PSK / Enterprise</td><td><span class="neutral">Current standard. Strong but older. Vulnerable to KRACK attack on implementation.</span></td></tr>
+            <tr><td><span class="hl-gold">WPA3</span></td><td>GCMP-256 / AES-CCMP</td><td>Open / SAE / Enterprise</td><td><span class="good">Newest. SAE replaces PSK. Resistant to offline dictionary attacks. Forward secrecy.</span></td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">WPA3's SAE (Simultaneous Authentication of Equals) replaces PSK in personal mode. SAE provides resistance to offline brute-force and dictionary attacks because the attacker must interact with the network for each guess. WPA2 PSK captured handshakes can be cracked offline — SAE prevents this.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Enterprise Wireless Authentication</div>
+        <div class="def-grid">
+          <span class="def-term">Enterprise Mode</span><span class="def-val">Uses RADIUS server for authentication. Each user has unique credentials. Supports EAP protocols. Required for corporate/government environments.</span>
+          <span class="def-term">EAP-TLS</span><span class="def-val">Most secure EAP variant. Both client and server use certificates. Mutual authentication. Requires client certificate deployment (complex to manage).</span>
+          <span class="def-term">PEAP</span><span class="def-val">Protected EAP. Only server uses certificate. Client uses username/password inside TLS tunnel. Easier to deploy than EAP-TLS.</span>
+          <span class="def-term">EAP-TTLS</span><span class="def-val">EAP Tunneled TLS. Similar to PEAP. Server-only certificate. Various inner authentication methods supported.</span>
+          <span class="def-term">Captive Portal</span><span class="def-val">Web page on first connection requiring credentials or agreement. Common in hotels, airports, guest networks. Not secure on its own — use with VPN.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Wireless Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">Evil Twin</span><span class="def-val">Rogue AP broadcasting same SSID as legitimate network. Victims connect to attacker's AP. Enables MITM for credential theft. Mitigate with certificate-based auth (EAP-TLS).</span>
+          <span class="def-term">Rogue AP</span><span class="def-val">Unauthorized access point connected to corporate network. May not impersonate legitimate SSID. Creates unsecured entry point. Detect with wireless IDS/IPS.</span>
+          <span class="def-term">Deauthentication Attack</span><span class="def-val">Sends spoofed deauth frames to disconnect clients from legitimate AP. Can force client to reconnect (capturing 4-way handshake for WPA2 cracking). Mitigate with 802.11w (Management Frame Protection).</span>
+          <span class="def-term">Jamming</span><span class="def-val">Radio frequency interference disrupts wireless communications. DoS attack against wireless. Difficult to prevent — detect and locate the source.</span>
+          <span class="def-term">Wardriving</span><span class="def-val">Driving around to discover and map wireless networks. Identifies networks with weak or no security for targeting.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Bluetooth & Near-Field Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">Bluejacking</span><span class="def-val">Sending unsolicited messages to discoverable Bluetooth devices. Annoying but generally harmless — no data is stolen. Range: ~10m. Mitigate: disable Bluetooth discoverability when not pairing.</span>
+          <span class="def-term">Bluesnarfing</span><span class="def-val">Unauthorized access to data on a Bluetooth device — contacts, emails, messages, photos. Exploits Bluetooth vulnerabilities without pairing. More serious than bluejacking. Mitigate: keep Bluetooth patched, use non-discoverable mode.</span>
+          <span class="def-term">Bluebugging</span><span class="def-val">Takes full control of a Bluetooth device — can make calls, send messages, access data. Most serious Bluetooth attack. Requires being within Bluetooth range.</span>
+          <span class="def-term">NFC Attacks</span><span class="def-val">NFC range is ~4cm but attackers with specialized antennas can extend range. Eavesdropping (capture NFC data), relay attacks (extend effective range to fool proximity check), data manipulation (modify NFC data in transit). Mitigate: disable NFC when not in use.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Physical & Hardware Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">USB Drop Attack (Baiting)</span><span class="def-val">Leaving infected USB drives in parking lots or common areas. Curiosity or good intent causes employees to plug them in. Can auto-execute malware via HID (Human Interface Device) emulation — the USB pretends to be a keyboard and types malicious commands faster than humans can see. Mitigate: disable AutoRun, USB port control via MDM/GPO, security awareness training.</span>
+          <span class="def-term">O.MG / Rubber Ducky</span><span class="def-val">Malicious USB devices disguised as ordinary cables or flash drives. Emulate keyboards to inject keystrokes at machine speed. Can exfiltrate data, create backdoors, or install malware in seconds. Mitigate: physical port controls, USB allowlisting.</span>
+          <span class="def-term">Evil Maid Attack</span><span class="def-val">Physical access to an unattended device. Attacker installs hardware keylogger, boots from external media to bypass disk encryption, or modifies the bootloader. Named for hotel maids who have physical access to rooms. Mitigate: full disk encryption, Secure Boot, BIOS passwords, device tracking.</span>
+          <span class="def-term">Supply Chain Attack</span><span class="def-val">Compromising hardware or software before it reaches the target organization. Examples: malicious firmware in routers/servers during manufacturing or shipping, malicious code injected into software updates (SolarWinds, NotPetya). Extremely difficult to detect. Mitigate: vendor risk management, hardware attestation, software signing and verification.</span>
+        </div>
+        <div class="callout callout-exam">Bluejacking = sends messages (harmless). Bluesnarfing = steals data (harmful). Bluebugging = full device control (most harmful). The "snarf" in bluesnarfing = snatching data. USB drop attacks exploit HID emulation — the drive acts as a keyboard, not just storage, bypassing many controls.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Device Management</div>
+        <div class="def-grid">
+          <span class="def-term">MDM (Mobile Device Management)</span><span class="def-val">Centrally manages mobile devices. Enforces policies: passcode requirements, encryption, remote wipe, application control, screen lock. Administers both corporate and personal devices.</span>
+          <span class="def-term">BYOD</span><span class="def-val">Bring Your Own Device. User owns and maintains the device. Cheapest but least secure — organization has limited control. Higher risk of data exposure.</span>
+          <span class="def-term">COPE</span><span class="def-val">Corporate Owned, Personally Enabled. Organization owns device, allows reasonable personal use. Best balance of control and user flexibility.</span>
+          <span class="def-term">CYOD</span><span class="def-val">Choose Your Own Device. Organization owns device, user selects from approved list. Maintains control while giving user some choice.</span>
+          <span class="def-term">Remote Wipe</span><span class="def-val">Erase all data on a lost or stolen device remotely. Critical security control. Full wipe (everything) or selective wipe (corporate data only).</span>
+          <span class="def-term">Sideloading</span><span class="def-val">Installing apps from outside the official app store. Bypasses app vetting process. MDM can prevent sideloading. Common way to install malicious apps.</span>
+          <span class="def-term">Jailbreaking / Rooting</span><span class="def-val">Removing OS manufacturer restrictions. iOS = jailbreaking. Android = rooting. Bypasses security controls. Exposes device to unapproved apps and exploits. MDM should detect and quarantine jailbroken devices.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH14 – MONITORING & INCIDENT RESPONSE ═══ -->
+  <section class="chapter" id="ch14">
+    <div class="chapter-header"><span class="chapter-num">CH 14</span><h2 class="chapter-title">Monitoring & Incident Response</h2><span class="chapter-obj">Domain 4 · Obj 4.3, 4.4, 4.8</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Incident Response Process</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Preparation</strong> — Develop IR plan, train team, establish communication channels, deploy tools (SIEM, EDR). Before any incident.</div>
+          <div class="ts-step"><strong>Detection & Analysis</strong> — Identify and confirm an incident. Review alerts, logs, and IoCs. Classify severity. Determine scope.</div>
+          <div class="ts-step"><strong>Containment</strong> — Stop the spread. Short-term containment (isolate systems) and long-term containment (patch, rebuild). Preserve forensic evidence.</div>
+          <div class="ts-step"><strong>Eradication</strong> — Remove the threat. Delete malware, close vulnerabilities, eliminate attacker footholds.</div>
+          <div class="ts-step"><strong>Recovery</strong> — Restore systems to normal operation. Validate they are clean. Monitor closely after return to service.</div>
+          <div class="ts-step"><strong>Lessons Learned</strong> — Post-incident review. What happened? What worked? What didn't? What changes will prevent recurrence? Document everything.</div>
+        </div>
+        <div class="callout callout-exam">CompTIA Security+ tests the PICERL model: Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned. Know the correct order and what each phase involves. Containment happens BEFORE eradication.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Attack Frameworks</div>
+        <div class="def-grid">
+          <span class="def-term">Cyber Kill Chain</span><span class="def-val">Lockheed Martin model. 7 phases of an attack: Reconnaissance → Weaponization → Delivery → Exploitation → Installation → Command & Control (C2) → Actions on Objectives. Used to understand and interrupt attacks at each phase.</span>
+          <span class="def-term">MITRE ATT&CK</span><span class="def-val">Knowledge base of adversary tactics, techniques, and procedures (TTPs). Provides common language for describing attacks. Used for threat hunting, detection engineering, and red team planning. More granular than the Kill Chain.</span>
+          <span class="def-term">Diamond Model</span><span class="def-val">Analyzes intrusions using four points: Adversary, Capability, Infrastructure, Victim. Relationships between these points characterize the attack. Used for attribution and intelligence analysis.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">SIEM — Security Information & Event Management</div>
+        <div class="def-grid">
+          <span class="def-term">Function</span><span class="def-val">Centralizes log collection, correlation, alerting, and reporting from across the environment. Single pane of glass for security monitoring.</span>
+          <span class="def-term">Log Sources</span><span class="def-val">Firewalls, IDS/IPS, endpoints, servers, applications, authentication systems, DNS, DHCP. Everything that generates events.</span>
+          <span class="def-term">Correlation Rules</span><span class="def-val">Logic that identifies patterns across multiple events from multiple sources that individually appear benign but together indicate an attack. Example: failed login + successful login + data download = potential credential theft.</span>
+          <span class="def-term">Dashboards & Alerts</span><span class="def-val">Real-time visibility into security posture. Alerts trigger when correlation rules fire. Trends show changes over time.</span>
+          <span class="def-term">Metadata Analysis</span><span class="def-val">Email metadata (sender, recipient, timestamps, routing), file metadata (creation date, author, location), mobile metadata (GPS, device ID), web metadata (User-Agent, referrer).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">SOAR & Playbooks</div>
+        <div class="def-grid">
+          <span class="def-term">SOAR</span><span class="def-val">Security Orchestration, Automation, and Response. Automates repetitive security tasks and incident response workflows. Integrates with SIEM, ticketing systems, threat intel feeds, and security tools. Reduces mean time to respond (MTTR) by handling routine alerts without human intervention.</span>
+          <span class="def-term">Playbook</span><span class="def-val">Predefined, documented response procedure for a specific type of security incident. Step-by-step actions to take when a particular alert fires. SOAR platforms execute playbooks automatically. Example: phishing playbook — auto-quarantine email, check URL reputation, alert SOC analyst.</span>
+          <span class="def-term">Runbook</span><span class="def-val">Similar to a playbook but covers routine operational procedures (not just incidents). More general — can cover daily maintenance tasks. Playbooks are a type of runbook focused on security incidents.</span>
+          <span class="def-term">Automation Benefits</span><span class="def-val">Faster response than human analysts. Consistent — no steps skipped. Frees analysts for high-level tasks. Scales to handle large alert volumes. Reduces alert fatigue.</span>
+        </div>
+        <div class="callout callout-exam">SIEM = collects and correlates logs, generates alerts. SOAR = automates the response to those alerts using playbooks. SIEM tells you something happened. SOAR automatically does something about it. Both are commonly deployed together in modern SOCs.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Log Types & Analysis</div>
+        <div class="def-grid">
+          <span class="def-term">System Logs</span><span class="def-val">OS-level events: startup/shutdown, driver failures, kernel errors, service starts/stops. Windows Event Log categories: System, Application, Security, Setup.</span>
+          <span class="def-term">Security Logs</span><span class="def-val">Authentication events: successful/failed logins, privilege use, account changes, object access (if auditing enabled). Most forensically valuable Windows log. Event IDs: 4624 (logon), 4625 (failed logon), 4648 (explicit credential use), 4740 (account lockout).</span>
+          <span class="def-term">Application Logs</span><span class="def-val">Events from applications: errors, crashes, access events, configuration changes. Format varies by application.</span>
+          <span class="def-term">Network Logs</span><span class="def-val">Firewall logs (allowed/denied traffic), DNS query logs, DHCP logs, proxy logs, VPN connection logs. Essential for detecting lateral movement and exfiltration.</span>
+          <span class="def-term">NetFlow / IPFIX</span><span class="def-val">Network traffic metadata: source/dest IP, port, protocol, byte count, timestamps. Does NOT capture packet payload — only traffic statistics. Used to detect anomalies (unusually large transfers, unexpected connections) without full packet capture overhead.</span>
+          <span class="def-term">Packet Capture (PCAP)</span><span class="def-val">Full capture of network traffic including payload content. High detail but high storage requirement. Wireshark, tcpdump. Used for deep forensic analysis and protocol debugging.</span>
+          <span class="def-term">Log Retention</span><span class="def-val">How long logs are kept. Compliance requirements vary: PCI DSS = 1 year minimum (3 months online). HIPAA = 6 years. Establish retention policy based on regulatory requirements and forensic needs. Logs must be tamper-evident.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Indicators of Compromise (IoCs)</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Account lockouts</span>
+          <span class="tag tag-orange">Concurrent sessions from multiple locations</span>
+          <span class="tag tag-orange">Impossible travel</span>
+          <span class="tag tag-orange">Unusual resource consumption</span>
+          <span class="tag tag-orange">Blocked content alerts</span>
+          <span class="tag tag-orange">Resource inaccessibility</span>
+          <span class="tag tag-orange">Out-of-cycle logging</span>
+          <span class="tag tag-orange">Missing or altered logs</span>
+          <span class="tag tag-orange">Unusual outbound traffic</span>
+          <span class="tag tag-orange">New admin accounts created</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Threat Hunting & Root Cause Analysis</div>
+        <div class="def-grid">
+          <span class="def-term">Threat Hunting</span><span class="def-val">Proactive search for threats that have evaded automated detection. Assumes breach has occurred — looks for evidence. Uses hypothesis-driven investigation and IoC analysis.</span>
+          <span class="def-term">Five Whys</span><span class="def-val">Root cause analysis technique. Ask "why?" at least five times to drill down from symptom to underlying cause. Identifies the actual problem, not just the symptoms.</span>
+          <span class="def-term">Root Cause Analysis</span><span class="def-val">Identifies the underlying cause of an incident. Not just what happened, but why it was possible. Drives systemic fixes rather than surface-level patches.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH15 – DIGITAL FORENSICS ═══ -->
+  <section class="chapter" id="ch15">
+    <div class="chapter-header"><span class="chapter-num">CH 15</span><h2 class="chapter-title">Digital Forensics</h2><span class="chapter-obj">Domain 4 · Obj 4.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Core Forensics Principles</div>
+        <div class="def-grid">
+          <span class="def-term">Chain of Custody</span><span class="def-val">Documented record of everyone who handled evidence from collection to court presentation. Ensures admissibility. Every transfer documented: who, when, why. Breaks in chain = evidence potentially inadmissible.</span>
+          <span class="def-term">Integrity Preservation</span><span class="def-val">Evidence must not be modified during collection or analysis. Use write blockers. Create forensic image (bit-for-bit copy). Work on copy — never on original.</span>
+          <span class="def-term">Legal Hold</span><span class="def-val">Organization's obligation to preserve potentially relevant evidence when litigation is reasonably anticipated. Requires suspending normal retention/destruction schedules. Triggered by lawsuit, investigation, or regulatory inquiry.</span>
+          <span class="def-term">Forensic Image</span><span class="def-val">Bit-for-bit copy of an entire storage device including deleted files, unallocated space, and slack space. Used for analysis while preserving original. FTK Imager is a common tool.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Order of Volatility</div>
+        <p>Evidence must be collected from most volatile (disappears fastest) to least volatile:</p>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>CPU Registers & Cache</strong> — Most volatile. Lost on power cycle. Capture first.</div>
+          <div class="ts-step"><strong>RAM (Memory)</strong> — Running processes, encryption keys, network connections. Lost on reboot. Use memory capture tools immediately.</div>
+          <div class="ts-step"><strong>Network Connections</strong> — Active sessions, open ports, routing table, ARP cache. Changes quickly.</div>
+          <div class="ts-step"><strong>Running Processes</strong> — Process list, open files, temporary data.</div>
+          <div class="ts-step"><strong>Disk / Storage</strong> — Files, logs, installed applications. Persists through power cycle.</div>
+          <div class="ts-step"><strong>Remote / Cloud Storage</strong> — May be changed by others or auto-deleted. Notify provider early.</div>
+          <div class="ts-step"><strong>Backups and Archives</strong> — Least volatile. Stable but may not reflect current state.</div>
+        </div>
+        <div class="callout callout-exam">RAM is collected BEFORE disk in forensics — always. It contains encryption keys, passwords in memory, running malware, and active network connections that are lost on shutdown. FTK Imager can capture both RAM and disk images.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">EDRM — Electronic Discovery Reference Model</div>
+        <p>The EDRM defines the standard process for electronic discovery in legal proceedings:</p>
+        <div class="ts-steps">
+          <div class="ts-step">Information Governance — Manage data before litigation occurs.</div>
+          <div class="ts-step">Identification — Know what data exists and where it is.</div>
+          <div class="ts-step">Preservation — Ensure data isn't changed or destroyed (legal hold).</div>
+          <div class="ts-step">Collection — Gather data for processing and management.</div>
+          <div class="ts-step">Processing — Remove irrelevant data, format for review.</div>
+          <div class="ts-step">Review — Ensure only appropriate data is included.</div>
+          <div class="ts-step">Analysis — Identify key topics, terms, individuals.</div>
+          <div class="ts-step">Production — Provide data to third parties or court.</div>
+          <div class="ts-step">Presentation — Testimony and expert analysis in court.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Forensics Tools</div>
+        <div class="def-grid">
+          <span class="def-term">FTK Imager</span><span class="def-val">Creates forensic disk images and captures RAM. Generates hash values to verify integrity. Free tool by Exterro. Standard for acquisition.</span>
+          <span class="def-term">FTK (Forensic Toolkit)</span><span class="def-val">Full forensic analysis suite. Processes disk images, email, mobile devices. Industry standard for law enforcement and enterprise.</span>
+          <span class="def-term">Autopsy</span><span class="def-val">Open-source forensic platform. Disk imaging, keyword search, timeline analysis, artifact recovery, file carving. Built on The Sleuth Kit. Free alternative to FTK.</span>
+          <span class="def-term">Volatility</span><span class="def-val">Open-source memory forensics framework. Analyzes RAM dumps for processes, network connections, malware artifacts, encryption keys.</span>
+          <span class="def-term">Write Blocker</span><span class="def-val">Hardware or software device that prevents any writes to original evidence during forensic acquisition. Essential for maintaining evidence integrity.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH16 – GOVERNANCE & COMPLIANCE ═══ -->
+  <section class="chapter" id="ch16">
+    <div class="chapter-header"><span class="chapter-num">CH 16</span><h2 class="chapter-title">Security Governance & Compliance</h2><span class="chapter-obj">Domain 5 · Obj 5.1, 5.2, 5.4, 5.5, 5.6</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Policy Hierarchy</div>
+        <div class="def-grid">
+          <span class="def-term">Policies</span><span class="def-val">High-level statements of management intent. "The organization will protect customer data." Sets the direction. All other documents derive from policy.</span>
+          <span class="def-term">Standards</span><span class="def-val">Specific mandatory requirements that implement policy. "All passwords must be at least 12 characters." More specific than policy.</span>
+          <span class="def-term">Procedures</span><span class="def-val">Step-by-step instructions for how to implement standards. "To reset a password: Step 1... Step 2..." Operational instructions.</span>
+          <span class="def-term">Guidelines</span><span class="def-val">Recommended best practices. Not mandatory. "We recommend using a password manager." Advisory, not enforced.</span>
+          <span class="def-term">AUP (Acceptable Use Policy)</span><span class="def-val">Defines what users may and may not do with organizational systems. Must be signed before access is granted. Foundation of user accountability.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Major Compliance Frameworks & Regulations</div>
+        <div class="def-grid">
+          <span class="def-term">HIPAA</span><span class="def-val">Health Insurance Portability and Accountability Act. Protects PHI (Protected Health Information). Applies to healthcare providers, insurers, and business associates. Security, Privacy, and Breach Notification Rules.</span>
+          <span class="def-term">PCI DSS</span><span class="def-val">Payment Card Industry Data Security Standard. Protects cardholder data. Applies to any organization that processes, stores, or transmits credit card data. 12 requirements. Not a law — industry standard with contractual enforcement.</span>
+          <span class="def-term">GDPR</span><span class="def-val">General Data Protection Regulation. EU regulation protecting personal data of EU residents. Applies globally if processing EU resident data. Right to be forgotten, data portability. Fines up to 4% of global revenue.</span>
+          <span class="def-term">SOX</span><span class="def-val">Sarbanes-Oxley Act. US law. Protects investors from fraudulent financial reporting. IT controls for financial systems. Applies to publicly traded US companies.</span>
+          <span class="def-term">GLBA</span><span class="def-val">Gramm-Leach-Bliley Act. US law. Financial institutions must protect customer financial information. Safeguards Rule requires security programs.</span>
+          <span class="def-term">FERPA</span><span class="def-val">Family Educational Rights and Privacy Act. Protects student education records. Applies to schools receiving federal funding. Parents/students control who sees records.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">NIST Cybersecurity Framework (CSF)</div>
+        <div class="def-grid">
+          <span class="def-term">Five Core Functions</span><span class="def-val">Identify → Protect → Detect → Respond → Recover. A cyclical process, not a checklist. Maps to security program maturity.</span>
+          <span class="def-term">Identify</span><span class="def-val">Know your assets, risks, and organizational context. Asset management, risk assessment, governance.</span>
+          <span class="def-term">Protect</span><span class="def-val">Implement safeguards. Access control, training, data security, maintenance, protective technology.</span>
+          <span class="def-term">Detect</span><span class="def-val">Discover security events. Anomaly detection, continuous monitoring, detection processes.</span>
+          <span class="def-term">Respond</span><span class="def-val">Take action on detected events. Response planning, communications, analysis, mitigation.</span>
+          <span class="def-term">Recover</span><span class="def-val">Restore capabilities after an incident. Recovery planning, improvements, communications.</span>
+        </div>
+        <p class="mini-h">NIST CSF Implementation Tiers</p>
+        <div class="def-grid">
+          <span class="def-term">Tier 1: Partial</span><span class="def-val">Ad hoc, reactive, informal risk management. No formal program.</span>
+          <span class="def-term">Tier 2: Risk Informed</span><span class="def-val">Approved practices but not organization-wide policy.</span>
+          <span class="def-term">Tier 3: Repeatable</span><span class="def-val">Formally approved policies, organization-wide implementation.</span>
+          <span class="def-term">Tier 4: Adaptive</span><span class="def-val">Continuously improved based on lessons learned and threat intelligence.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">NIST Risk Management Framework (RMF)</div>
+        <p>7-step process for managing information security and privacy risk:</p>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Prepare</strong> — Set organizational risk management context.</div>
+          <div class="ts-step"><strong>Categorize</strong> — Classify system and data based on impact level.</div>
+          <div class="ts-step"><strong>Select</strong> — Choose appropriate security controls (NIST SP 800-53).</div>
+          <div class="ts-step"><strong>Implement</strong> — Put selected controls in place.</div>
+          <div class="ts-step"><strong>Assess</strong> — Verify controls are implemented correctly and effective.</div>
+          <div class="ts-step"><strong>Authorize</strong> — Senior official accepts residual risk and authorizes operation.</div>
+          <div class="ts-step"><strong>Monitor</strong> — Continuously monitor controls and system for changes.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Change Management</div>
+        <div class="ts-steps">
+          <div class="ts-step">Request for Change (RFC) submitted with description and justification.</div>
+          <div class="ts-step">Change review board evaluates impact, risk, and resources required.</div>
+          <div class="ts-step">Approve or reject. If approved, schedule maintenance window.</div>
+          <div class="ts-step">Test the change in non-production environment.</div>
+          <div class="ts-step">Implement change in production with a backout plan ready.</div>
+          <div class="ts-step">Document the change — update diagrams, policies, and procedures.</div>
+        </div>
+        <div class="callout callout-info">Version control (Git) is an important component of change management. Allows reversion to previous configurations if changes cause problems. Every configuration change should be versioned and documented.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Third-Party Risk Management</div>
+        <div class="def-grid">
+          <span class="def-term">Vendor Risk Assessment</span><span class="def-val">Evaluating the security posture of third parties before and during a business relationship. Questionnaires, on-site audits, review of certifications (SOC 2, ISO 27001). Risk is transferred by contract but not eliminated — your organization is still responsible for breaches caused by vendors.</span>
+          <span class="def-term">Supply Chain Risk</span><span class="def-val">Risk introduced through hardware, software, or services from the supply chain. A compromise anywhere in the chain can impact the end user. Examples: compromised firmware in hardware, malicious packages in software repositories, SolarWinds-style update poisoning.</span>
+          <span class="def-term">Due Diligence</span><span class="def-val">Thorough investigation of a potential vendor's security controls, financial stability, and compliance posture before entering a contract. Ongoing diligence required throughout the relationship — not just at contract signing.</span>
+          <span class="def-term">Vendor Agreements</span><span class="def-val">Contractual documents that define security expectations. SLA (Service Level Agreement) — performance metrics. NDA (Non-Disclosure Agreement) — confidentiality. MOU (Memorandum of Understanding) — intent agreement, not legally binding. MSA (Master Service Agreement) — overarching contract terms. BPA (Business Partnership Agreement) — partnership terms.</span>
+          <span class="def-term">Right to Audit</span><span class="def-val">Contractual clause giving the customer the right to audit a vendor's security controls. Critical for high-risk vendor relationships. Alternatively, require vendors to provide SOC 2 Type II reports (third-party audit results).</span>
+          <span class="def-term">End-of-Life (EOL) Vendor Risk</span><span class="def-val">Third-party components that reach EOL stop receiving patches. EOL software in your supply chain becomes an unpatched vulnerability you cannot fix. Identify and plan for replacement before EOL dates.</span>
+        </div>
+        <div class="callout callout-exam">Third-party risk is heavily tested in SY0-701. Key concept: outsourcing a function transfers responsibility but NOT accountability. If a vendor breaches your customer data, your organization faces the regulatory and reputational consequences. Due diligence + contractual protections + ongoing monitoring are all required.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Auditing & Assessments</div>
+        <div class="def-grid">
+          <span class="def-term">Internal Audit</span><span class="def-val">Conducted by the organization's own staff. Less expensive. May lack objectivity. Good for ongoing compliance monitoring.</span>
+          <span class="def-term">External Audit</span><span class="def-val">Conducted by an independent third party. More objective and credible. Required for many compliance frameworks (SOC 2, PCI QSA). More expensive.</span>
+          <span class="def-term">Attestation</span><span class="def-val">Formal declaration that security controls are in place and functioning. Management signs off on compliance statements. Carries legal weight — false attestation = significant liability.</span>
+          <span class="def-term">SOC Reports</span><span class="def-val">System and Organization Controls. SOC 1 = financial controls. SOC 2 = security, availability, processing integrity, confidentiality, privacy (Trust Services Criteria). Type I = controls exist at a point in time. Type II = controls operated effectively over a period (6+ months). SOC 2 Type II is the gold standard for vendor assurance.</span>
+          <span class="def-term">ISO 27001</span><span class="def-val">International standard for information security management systems (ISMS). Certification requires third-party audit. Demonstrates comprehensive security program. Globally recognized.</span>
+          <span class="def-term">Regulatory Compliance</span><span class="def-val">Meeting requirements imposed by law or regulation. Non-compliance = fines, lawsuits, loss of license to operate. Examples: HIPAA fines up to $1.9M per violation category per year. GDPR fines up to €20M or 4% of global annual turnover.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH17 – RISK MANAGEMENT & PRIVACY ═══ -->
+  <section class="chapter" id="ch17">
+    <div class="chapter-header"><span class="chapter-num">CH 17</span><h2 class="chapter-title">Risk Management & Privacy</h2><span class="chapter-obj">Domain 5 · Obj 5.2, 5.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Risk Fundamentals</div>
+        <div class="def-grid">
+          <span class="def-term">Threat</span><span class="def-val">A possible event that could cause harm. "Someone might try to steal our data."</span>
+          <span class="def-term">Vulnerability</span><span class="def-val">A weakness in a system that could be exploited. "Our web app is susceptible to SQL injection."</span>
+          <span class="def-term">Risk</span><span class="def-val">The product of threat and vulnerability. Risk = Likelihood × Impact. Without a vulnerability, a threat presents no risk. Without a threat, a vulnerability presents no risk.</span>
+          <span class="def-term">Likelihood</span><span class="def-val">Probability that a threat will exploit a vulnerability. Expressed as probability (quantitative) or High/Medium/Low (qualitative).</span>
+          <span class="def-term">Impact</span><span class="def-val">The damage a risk event would cause if it occurred. Financial, operational, reputational, compliance.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Risk Assessment Types</div>
+        <div class="def-grid">
+          <span class="def-term">Quantitative Risk Assessment</span><span class="def-val">Uses numerical data and calculations. Produces dollar-value results. More objective but requires accurate data. Key metrics: AV (Asset Value), EF (Exposure Factor), ARO (Annual Rate of Occurrence), SLE, ALE.</span>
+          <span class="def-term">SLE (Single Loss Expectancy)</span><span class="def-val">AV × EF. Expected loss from a single risk event. Example: $1M server × 30% destruction = $300,000 SLE.</span>
+          <span class="def-term">ALE (Annual Loss Expectancy)</span><span class="def-val">SLE × ARO. Expected annual loss from a risk. Example: $300,000 SLE × 0.5 events/year = $150,000 ALE. Use ALE to justify security investment — don't spend more than the ALE to prevent the risk.</span>
+          <span class="def-term">Qualitative Risk Assessment</span><span class="def-val">Uses subjective ratings (High/Medium/Low, 1–5 scale). Based on expert opinion. Faster and cheaper than quantitative. Used when hard data is unavailable. Produces risk matrix.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Risk Responses</div>
+        <div class="def-grid">
+          <span class="def-term">Risk Mitigation</span><span class="def-val">Reduce the likelihood or impact of the risk. Implementing security controls, patches, or redundancy. Most common response.</span>
+          <span class="def-term">Risk Avoidance</span><span class="def-val">Change business practices to eliminate the risk entirely. Stop doing the risky activity. Example: don't store credit card data at all.</span>
+          <span class="def-term">Risk Transference</span><span class="def-val">Shift the risk to another party. Cyber insurance, contracts, outsourcing. Financial impact transferred, not the risk itself.</span>
+          <span class="def-term">Risk Acceptance</span><span class="def-val">Acknowledge the risk and decide to live with it. Appropriate when cost of mitigation exceeds expected loss. Must be a documented, conscious decision.</span>
+        </div>
+        <div class="callout callout-exam">Risk can never be eliminated completely — there is always residual risk remaining after controls are applied. Accepting residual risk after mitigation is normal. The goal is to reduce risk to an acceptable level, not to zero.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Risk Register & Risk Matrix</div>
+        <div class="def-grid">
+          <span class="def-term">Risk Register</span><span class="def-val">Centralized document tracking all identified risks, their likelihood, impact, owner, and mitigation status. Living document updated continuously. Used for risk prioritization and management reporting.</span>
+          <span class="def-term">Risk Matrix</span><span class="def-val">Visual grid plotting likelihood vs impact. Identifies risk severity at a glance. High likelihood + High impact = Critical risk (red zone). Used in qualitative assessments.</span>
+          <span class="def-term">Risk Appetite</span><span class="def-val">The level of risk an organization is willing to accept in pursuit of its objectives. Set by senior leadership and the board.</span>
+          <span class="def-term">Risk Tolerance</span><span class="def-val">The acceptable variation in outcomes related to risk. How much actual risk can deviate from risk appetite before action is required.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Data Roles & Classification</div>
+        <div class="def-grid">
+          <span class="def-term">Data Owner</span><span class="def-val">Senior leader responsible for a data asset. Sets classification and access policies. Accountable for the data.</span>
+          <span class="def-term">Data Custodian</span><span class="def-val">IT professional responsible for implementing the data owner's policies. Day-to-day management: backups, access controls, encryption.</span>
+          <span class="def-term">Data Processor</span><span class="def-val">Organization or system that processes data on behalf of the data controller. Common in GDPR context.</span>
+          <span class="def-term">Data Steward</span><span class="def-val">Responsible for data quality and governance. Ensures data is accurate, consistent, and properly documented.</span>
+          <span class="def-term">Government Classification</span><span class="def-val">Top Secret → Secret → Confidential → Sensitive But Unclassified → Unclassified.</span>
+          <span class="def-term">Commercial Classification</span><span class="def-val">Typically: Restricted/Confidential → Private/Internal → Public.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Privacy Enhancing Technologies</div>
+        <div class="def-grid">
+          <span class="def-term">Data Minimization</span><span class="def-val">Collect and retain only the minimum personal data necessary for the stated purpose. Core GDPR principle. Limits exposure.</span>
+          <span class="def-term">Anonymization</span><span class="def-val">Remove all identifying information from data sets so individuals cannot be identified. True anonymization means re-identification is not possible.</span>
+          <span class="def-term">Pseudonymization</span><span class="def-val">Replace identifying information with pseudonyms. Data can be re-identified with the mapping key. GDPR recognizes this as a risk reduction measure but not full anonymization.</span>
+          <span class="def-term">Data Sovereignty</span><span class="def-val">Data is subject to the laws of the country where it is stored. Cloud customers must know where their data resides. Critical for GDPR compliance.</span>
+          <span class="def-term">Right to be Forgotten</span><span class="def-val">GDPR provision allowing individuals to request deletion of their personal data when it's no longer needed for its original purpose. Organization must comply within 30 days.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  COMPTIA SECURITY+ · SY0-701 · STAR V LEARNING CENTERS · JACKSONVILLE, FL<br>
+  CIA TRIAD · CRYPTOGRAPHY · THREATS · GOVERNANCE · ALL 5 DOMAINS COVERED
+</footer>
+
+</body>
+</html>
